@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'mywpicons';
+  src:  url('../font/mywp.eot?sxxje2');
+  src:  url('../font/mywp.eot?sxxje2#iefix') format('embedded-opentype'),
+    url('../font/mywp.ttf?sxxje2') format('truetype'),
+    url('../font/mywp.woff?sxxje2') format('woff'),
+    url('../font/mywp.svg?sxxje2#mywp') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body.wp-admin #adminmenu .toplevel_page_mywp > a > .dashicons-before:before,
+body.wp-admin #adminmenu .toplevel_page_mywp_network > a > .dashicons-before:before {
+  font-family: 'mywpicons' !important;
+  content: "\e900";
+}
+
+.mywpicons {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'mywpicons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.mywpicons.mywp-logo:before {
+  content: "\e900";
+}

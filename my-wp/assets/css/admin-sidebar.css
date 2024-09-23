@@ -1,0 +1,130 @@
+body.wp-admin.mywp #adminmenu #collapse-menu {
+  display: none;
+}
+body.wp-admin.mywp #adminmenu li.mywp-sidebar-item {
+  position: relative;
+}
+@media screen and (max-width: 782px) {
+  body.wp-admin.mywp.auto-fold #adminmenu li.mywp-sidebar-item {
+    width: auto;
+  }
+}
+body.wp-admin.mywp #adminmenu li {
+  min-height: auto;
+}
+body.wp-admin.mywp #adminmenu li.wp-submenu-head {
+  cursor: default;
+  opacity: 0.5;
+}
+body.wp-admin.mywp #adminmenu li.mywp-sidebar-item .mywp-sidebar-item-link {
+  padding-left: 0;
+  padding-right: 0;
+  line-height: 1.4em;
+}
+body.wp-admin.mywp #adminmenu li.mywp-sidebar-item .mywp-sidebar-item-link .mywp-sidebar-item-icon-img img {
+  max-height: 20px;
+}
+body.wp-admin.mywp #adminmenu li.mywp-sidebar-item .mywp-title {
+  margin: 0 0 0 6px;
+}
+body.wp-admin.mywp #adminmenu li.mywp-sidebar-item .mywp-sidebar-item-childs {
+  margin: 0;
+}
+body.wp-admin.mywp #adminmenu li.mywp-sidebar-item.wp-has-submenu:hover .mywp-sidebar-item-childs {
+  top: 0;
+}
+body.wp-admin.mywp.folded #adminmenu li.mywp-sidebar-item.wp-has-submenu:hover .mywp-sidebar-item-childs {
+  position: absolute;
+  left: 36px;
+}
+body.wp-admin.mywp.folded #adminmenu li.mywp-sidebar-item.wp-has-submenu:hover .mywp-sidebar-item-childs .wp-menu-name {
+  position: static;
+  left: 0;
+}
+
+@media only screen and (max-width: 960px) {
+  body.wp-admin.mywp.auto-fold #adminmenu li.mywp-sidebar-item.wp-has-submenu:hover .mywp-sidebar-item-childs {
+    position: absolute;
+    left: 36px;
+  }
+  body.wp-admin.mywp.auto-fold #adminmenu li.mywp-sidebar-item.wp-has-submenu:hover .mywp-sidebar-item-childs .wp-menu-name {
+    position: static;
+    left: 0;
+  }
+}
+@media screen and (max-width: 782px) {
+  body.wp-admin.mywp.auto-fold #adminmenu li.mywp-sidebar-item .mywp-sidebar-item-childs {
+    width: auto;
+  }
+  body.wp-admin.mywp.auto-fold #adminmenu li.mywp-sidebar-item.wp-has-submenu:hover .mywp-sidebar-item-childs {
+    position: static;
+    left: 0;
+  }
+}
+body.wp-admin.mywp #adminmenu li.mywp-sidebar-item .mywp-sidebar-item-childs .mywp-sidebar-item-childs {
+  position: static;
+  padding-left: 20px;
+  width: 140px;
+}
+body.wp-admin.mywp #adminmenu li.mywp-sidebar-item .mywp-sidebar-item-childs .mywp-sidebar-item-link {
+  padding: 0 0 0 12px;
+}
+@media screen and (max-width: 782px) {
+  body.wp-admin.mywp.auto-fold #adminmenu li.mywp-sidebar-item .mywp-sidebar-item-link {
+    height: auto;
+  }
+  body.wp-admin.mywp.auto-fold #adminmenu li.mywp-sidebar-item .mywp-sidebar-item-childs .mywp-sidebar-item-link {
+    padding: 0 0 0 12px;
+  }
+}
+body.wp-admin.mywp #adminmenu li.mywp-sidebar-item .mywp-sidebar-item-childs .mywp-sidebar-item-link .mywp-sidebar-name {
+  padding: 6px 0;
+}
+body.wp-admin.mywp #adminmenu li.mywp-sidebar-item .separator {
+  height: auto;
+  padding: 7px 0;
+  width: 100%;
+  margin: 0 auto;
+  cursor: default;
+}
+body.wp-admin.mywp #adminmenu li#sidebar-collapse {
+  margin-top: 16px;
+  margin-left: 8px;
+  color: #aaa;
+  text-align: left;
+  cursor: pointer;
+}
+@media screen and (max-width: 782px) {
+  body.wp-admin.mywp #adminmenu li#sidebar-collapse {
+    display: none;
+  }
+}
+body.wp-admin.mywp #adminmenu li#sidebar-collapse .collapse-button-icon {
+  color: #a0a5aa;
+  display: inline-block;
+  padding: 8px 0;
+  width: 28px;
+  height: 28px;
+}
+body.wp-admin.mywp #adminmenu li#sidebar-collapse .collapse-button-icon:before {
+  content: "\f141";
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+body.wp-admin.mywp.folded #adminmenu li#sidebar-collapse .collapse-button-icon:before {
+  content: "\f139";
+}
+@media only screen and (max-width: 960px) {
+  body.wp-admin.mywp.auto-fold #adminmenu li#sidebar-collapse .collapse-button-icon:before {
+    content: "\f139";
+  }
+}
+
+body.wp-admin.mywp.folded #adminmenu li#sidebar-collapse .collapse-button-label {
+  display: none;
+}
+@media only screen and (max-width: 960px) {
+  body.wp-admin.mywp.auto-fold #adminmenu li#sidebar-collapse .collapse-button-label {
+    display: none;
+  }
+}

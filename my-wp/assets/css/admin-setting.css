@@ -1,0 +1,503 @@
+body.mywp-setting {}
+body.mywp-setting .spinner {
+  float: none;
+}
+body.mywp-setting input::-webkit-input-placeholder,
+body.mywp-setting textarea::-webkit-input-placeholder {
+  color: #bbb;
+}
+body.mywp-setting input::-moz-placeholder,
+body.mywp-setting textarea::-moz-placeholder {
+  color: #bbb
+}
+body.mywp-setting input:-ms-input-placeholder,
+body.mywp-setting textarea:-ms-input-placeholder {
+  color: #bbb
+}
+body.mywp-setting input.disabled,
+body.mywp-setting select.disabled,
+body.mywp-setting textarea.disabled {
+  background: #eee;
+}
+body.mywp-setting .button .dashicons {
+  margin-top: 4px;
+}
+@media screen and (max-width: 782px) {
+  body.mywp-setting .button .dashicons {
+    margin-top: 0;
+  }
+}
+body.mywp-setting .wrap h1 {
+  margin-bottom: 22px;
+}
+body.mywp-setting .form-table th,
+body.mywp-setting .form-table td {
+  border-left: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  padding: 16px 10px;
+  margin: 0;
+}
+body.mywp-setting .form-table tr th:last-of-type,
+body.mywp-setting .form-table tr td:last-of-type {
+  border-right: 1px solid #ddd;
+}
+body.mywp-setting .form-table tr:last-of-type th,
+body.mywp-setting .form-table tr:last-of-type td {
+  border-bottom: 1px solid #ddd;
+}
+body.mywp-setting .form-table thead th,
+body.mywp-setting .form-table thead td {
+  text-align: center;
+}
+body.mywp-setting .mywp-help {
+  color: #A76C0C;
+  display: inline-block;
+}
+body.mywp-setting .mywp-help a {
+  text-decoration: none;
+}
+body.mywp-setting .mywp-help a:hover .dashicons {
+  color: #DB8C2C;
+}
+body.mywp-setting .mywp-help .dashicons {
+  color: #EE880B;
+}
+body.mywp-setting .mywp-description {
+  background: #FEF3D3;
+  color: #A76C0C;
+  padding: 6px 12px;
+  display: inline-block;
+}
+body.mywp-setting .mywp-description .dashicons {
+  color: #EE880B;
+}
+body.mywp-setting .mywp-desc-caution {
+  background: #f12d2d;
+  color: #fff;
+  font-weight: bold;
+  padding: 6px 12px;
+  display: inline-block;
+}
+body.mywp-setting .mywp-desc-caution .dashicons {
+  color: #fff;
+}
+body.mywp-setting .dashicons.spin {
+  -webkit-animation: spin 1.5s linear infinite;
+  -moz-animation: spin 1.5s linear infinite;
+  -ms-animation: spin 1.5s linear infinite;
+  -o-animation: spin 1.5s linear infinite;
+  animation: spin 1.5s linear infinite;
+}
+body.mywp-setting .mywp-error-message {
+  background: #FED5D3;
+  color: #A22828;
+  padding: 12px;
+}
+body.mywp-setting .mywp-error-message .dashicons {
+  color: #E6170D;
+}
+@-webkit-keyframes spin {
+  0% {-webkit-transform: rotate(0deg);}
+  100% {-webkit-transform: rotate(360deg);}
+}
+@-moz-keyframes spin {
+  0% {-moz-transform: rotate(0deg);}
+  100% {-moz-transform: rotate(360deg);}
+}
+@-ms-keyframes spin {
+  0% {-ms-transform: rotate(0deg);}
+  100% {-ms-transform: rotate(360deg);}
+}
+@-o-keyframes spin {
+  0% {-o-transform: rotate(0deg);}
+  100% {-o-transform: rotate(360deg);}
+}
+@keyframes spin {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+body.mywp-setting.wp-core-ui .button-caution {
+  background: #C0392B;
+  border-color: #C0392B;
+  color: white;
+  box-shadow: none;
+  text-shadow: none;
+}
+body.mywp-setting.wp-core-ui .button-caution:hover,
+body.mywp-setting.wp-core-ui .button-caution:focus {
+  background: #CE3F2F;
+  border-color: #A33023;
+  color: white;
+}
+body.mywp-setting.wp-core-ui .button-caution:focus {
+  box-shadow: 0 0 0 1px #fff, 0 0 0 3px #C0392B;
+}
+body.mywp-setting #mywp-popup #mywp-popup-bg,
+body.mywp-setting #mywp-popup #mywp-popup-container {
+  position: fixed;
+  display: none;
+}
+body.mywp-setting #mywp-popup.active #mywp-popup-bg,
+body.mywp-setting #mywp-popup.active #mywp-popup-container {
+  display: block;
+}
+body.mywp-setting #mywp-popup #mywp-popup-bg {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.8;
+  z-index: 159900;
+}
+body.mywp-setting #mywp-popup #mywp-popup-container {
+  top: 50px;
+  right: 50px;
+  bottom: 50px;
+  left: 50px;
+  background: #FFF;
+  min-height: 300px;
+  z-index: 160000;
+}
+body.mywp-setting #mywp-popup #mywp-popup-container #mywp-popup-close-right {
+  position: absolute;
+  right: 30px;
+  top: 16px;
+}
+body.mywp-setting #mywp-popup #mywp-popup-container #mywp-popup-close-right a {
+  color: #666;
+  text-decoration: none;
+}
+body.mywp-setting #mywp-popup #mywp-popup-container #mywp-popup-content {
+  max-height: 92%;
+  overflow-y: scroll;
+}
+body.mywp-setting #mywp-popup #mywp-popup-container #mywp-popup-content #mywp-popup-content-inner {
+  padding: 20px;
+}
+body.mywp-setting #mywp-popup #mywp-popup-container #mywp-popup-close-bottom {
+  position: absolute;
+  height: 6%;
+  padding-top: 10px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  background: #eee;
+}
+body.mywp-setting #setting-screen {
+  position: relative;
+}
+body.mywp-setting #setting-screen #setting-screen-select-screens {
+  position: absolute;
+  left: 0;
+  top: 30px;
+  width: 141px;
+}
+body.mywp-setting #setting-screen #setting-screen-select-screens ul {
+  margin: 0;
+  padding: 0;
+}
+body.mywp-setting #setting-screen #setting-screen-select-screens ul li {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+body.mywp-setting #setting-screen #setting-screen-select-screens ul li a {
+  display: block;
+  margin: 0;
+  padding: 12px 8px;
+  border-top: 1px solid #d8d8d8;
+  border-right: 1px solid #bbb;
+  border-left: 1px solid #d8d8d8;
+  background: #f1f1f1;
+  text-decoration: none;
+}
+body.mywp-setting #setting-screen #setting-screen-select-screens ul li.active {
+  font-weight: bold;
+}
+body.mywp-setting #setting-screen #setting-screen-select-screens ul li:last-child a {
+  border-bottom: 1px solid #d8d8d8;
+}
+body.mywp-setting #setting-screen #setting-screen-select-screens ul li.active a {
+  background: #fff;
+  padding-top: 26px;
+  padding-bottom: 26px;
+  border-color: #bbb;
+  border-bottom: 1px solid #bbb;
+  border-right: 0 none;
+}
+body.mywp-setting #setting-screen #setting-screen-select-screens ul li a:hover {
+  background: #D4E6F1;
+}
+body.mywp-setting #setting-screen.multiple #setting-screen-section-wrap {
+  margin-left: 140px;
+}
+body.mywp-setting #setting-screen.multiple #setting-screen-section-wrap #setting-screen-section {
+  border: 1px solid #bbb;
+  background: #fff;
+  padding: 20px;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section .setting-screen-title {
+  background: #DBECF9;
+  color: #2980B9;
+  padding: 12px 16px;
+  margin: 0 0 24px 0;
+  line-height: 1.6em;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section .setting-screen-title:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section .setting-screen-title #setting-document-link {
+  float: right;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section .mywp-setting-screen-subtitle {
+  color: #3e7192;
+  padding: 0;
+  margin: 0 0 18px 0;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-advance #select-advance-setting {
+  margin: 20px 0 0 20px;
+  background: #F2F9FF;
+  border: 1px solid #ddd;
+  padding: 8px 28px 8px 16px;
+  display: inline-block;
+  transform: translate(0, 2px);
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-advance.active #select-advance-setting {
+  border-bottom: 0 none;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-advance #select-advance-setting:before {
+  font-family: dashicons;
+  display: inline-block;
+  content: "\f140";
+  width: 24px;
+  height: 22px;
+  font-size: 22px;
+  line-height: 1;
+  float: left;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-advance.active #select-advance-setting:before {
+  content: "\f142";
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-advance #setting-screen-advance-content {
+  display: none;
+  background: #F2F9FF;
+  padding: 32px 20px 20px 20px;
+  border: 1px solid #ddd;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-advance.active #setting-screen-advance-content {
+  display: block;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-advance #setting-screen-advance-content table {
+  border-top: 1px solid #dce2e8;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-advance #setting-screen-advance-content table th,
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-advance #setting-screen-advance-content table td {
+  border-bottom: 1px solid #dce2e8;
+  border-top: 0 none;
+  border-right: 0 none;
+  border-left: 0 none;
+}
+
+
+
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-select-post-types,
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-input-post,
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-select-taxonomies {
+  margin: 0 0 34px 0;
+  text-align: center;
+  border-bottom: 1px solid #DBECF9;
+  padding: 14px;
+}
+
+
+body.mywp-setting #setting-screen #setting-screen-management-meta-boxes #meta-box-bulk-actions,
+body.mywp-setting #setting-screen #setting-screen-management-block-editor-panels #block-editor-panel-bulk-actions {
+  margin-bottom: 0;
+  text-align: center;
+}
+body.mywp-setting #setting-screen #setting-screen-management-meta-boxes #meta-box-bulk-actions li,
+body.mywp-setting #setting-screen #setting-screen-management-block-editor-panels #block-editor-panel-bulk-actions li {
+  display: inline;
+  margin: 0 8px;
+}
+
+
+
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns {
+  margin: 0 30px;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns .mywp-setting-screen-subtitle .button {
+  margin-left: 18px;
+  font-weight: normail;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns .mywp-setting-screen-subtitle .button .dashicons {
+  margin-top: 1px;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns {}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-available {
+  background: #fafafa;
+  border: 1px solid #eee;
+  padding: 20px;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-available #setting-list-columns-available-select-column {
+  max-width: 70%;
+  min-width: 50%;
+  margin-right: 2%;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-available .spinner {
+  float: right;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-available  #setting-list-columns-available-columns {
+  display: none;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns {}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items {
+  padding: 30px 0;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item {
+  border: 1px solid #ddd;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item:hover {
+  border-color: #999;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item.active {
+  border-color: #F49C31;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .sortable-placeholder {
+  background: #F7E0C5;
+  margin: 18px 0;
+  height: 38px;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-header {
+  cursor: grab;
+  background: #fafafa;
+  line-height: 38px;
+  overflow: hidden;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item.active > .list-column-item-header {
+  border-color: #F49C31;
+  background: #F49C31;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item.active {
+   background: #FEF5EA;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-header {
+  height: 38px;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-header > .item-header {
+  border-bottom: 1px solid #F49C31;
+  background: #F7E0C5;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item.already .list-column-item-header {
+  animation: mywp_already_list_column 0.5s infinite;
+}
+@keyframes mywp_already_list_column {
+  100% {
+    background: #fafafa;
+  }
+  50% {
+    background: rgba(255, 0, 0, 0.1);
+  }
+  100% {
+    background: #fafafa;
+  }
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-header .active-toggle {
+  float: right;
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  text-decoration: none;
+  color: #72777c;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-header .active-toggle:hover {
+  color: #23282d;
+  background: #efefef;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item.active .list-column-item-header .active-toggle:hover {
+  color: #23282d;
+  background: #fdc989;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-header .active-toggle:focus {
+  box-shadow: none;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-header .active-toggle:before {
+  font: 400 20px/1 dashicons;
+  content: "\f140";
+  display: block;
+  text-align: center;
+  padding-top: 10px;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item.active > .list-column-item-header .active-toggle:before {
+  content: "\f142";
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-header .title-wrap {
+  margin-left: 10px;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-header .title-wrap {
+  margin-left: 10px;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-header .title-wrap .title {}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item.active > .list-column-item-header .title-wrap .title {
+  color: #fff;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-header .title-wrap .default-title {
+  color: #999;
+  font-style: italic;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item.active > .list-column-item-header .title-wrap .default-title {
+  color: #F9CDA1;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-header .title-wrap .mywp-desc-caution {
+  margin: 0 auto;
+  padding: 2px 4px;
+}
+
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-header .title-wrap .column-id {
+  float: right;
+  display: inline-block;
+  opacity: 0.5;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-content {
+  display: none;
+  padding: 20px;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item.active > .list-column-item-content {
+  display: block;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-content .content-wrap .content-hidden {
+  display: none;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-content .content-wrap > .mywp-description {
+  background: #fff;
+  border: 1px solid #e7b890;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-content .content-wrap .content-fields {}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-content .content-wrap .content-fields .form-table {
+  margin: 0 auto 40px auto;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-content .content-wrap .content-fields .form-table th {
+  width: 120px;
+  background: #fff;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-content .content-wrap .content-fields .form-table td {
+  background: #fff;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-content .content-wrap .content-fields .form-table th {
+  width: 120px;
+  background: #fff;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-content .content-wrap .content-fields .form-table tr.sortable-disabled th {
+  background: #eee;
+  color: #bbb;
+}
+body.mywp-setting #setting-screen #setting-screen-section-wrap #setting-screen-section #setting-screen-setting-list-columns #setting-list-columns #setting-list-columns-setting-columns #setting-list-columns-setting-columns-items .list-columns-item .list-column-item-content .content-wrap .content-fields .form-table tr.sortable-disabled td {
+  background: #eee;
+  color: #bbb;
+}

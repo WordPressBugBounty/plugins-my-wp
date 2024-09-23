@@ -1,0 +1,167 @@
+#mywp-debug-wrap {
+  width: 100%;
+  position: relative;
+}
+body.wp-admin #wpbody-content {
+  min-height: 800px;
+}
+body.wp-admin #mywp-debug-wrap {
+  position: absolute;
+}
+body.wp-admin.block-editor-page #mywp-debug-wrap {
+  top: 95vh;
+}
+#mywp-debug {
+  background: #2D2D2D;
+  color: #8E8E8E;
+  margin: 0 0 40px 0;
+  padding: 0;
+  font-size: 15px;
+  line-height: 20px;
+  font-family: san-serif;
+}
+body.wp-admin #mywp-debug {
+  margin-left: 180px;
+  margin-right: 20px;
+}
+body.wp-admin.block-editor-page #mywp-debug {
+  margin-left: 0;
+  margin-right: 0;
+}
+body.wp-admin.folded #mywp-debug {
+  margin-left: 50px;
+}
+body.wp-admin.folded.block-editor-page #mywp-debug {
+  margin-left: 50px;
+}
+@media screen and ( max-width: 960px ) {
+  body.wp-admin.auto-fold #mywp-debug {
+    margin-left: 56px;
+  }
+  body.wp-admin.auto-fold.block-editor-page #mywp-debug {
+    margin-left: 0;
+  }
+}
+@media screen and ( max-width: 782px ) {
+  body.wp-admin.auto-fold #mywp-debug {
+    margin-left: 0;
+  }
+}
+#mywp-debug p,
+#mywp-debug ul,
+#mywp-debug ol,
+#mywp-debug li,
+#mywp-debug div,
+#mywp-debug span {
+  margin: 0;
+  padding: 0;
+}
+#mywp-debug .main-title {
+  text-align: center;
+  margin: 0 auto 20px auto;
+  padding: 20px 0 0 0;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 34px;
+  color: rgba(255, 255, 255, 0.2);
+}
+#mywp-debug .debug-types {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+#mywp-debug .debug-types .type-select {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.4);
+  border-bottom: 0 none;
+  margin: 0 10px;
+  padding: 8px 20px;
+  font-size: 16px;
+  line-height: 22px;
+  text-decoration: none;
+}
+#mywp-debug .debug-types .type-select.active {
+  background: rgba(40, 140, 200, 0.4);
+  color: rgba(255, 255, 255, 0.8);
+  border-color: rgba(40, 140, 200, 0.45);
+}
+#mywp-debug .debug-renders {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+#mywp-debug .debug-renders .render {
+  display: none;
+}
+#mywp-debug .debug-renders .render.active {
+  display: block;
+}
+#mywp-debug .debug-renders .render .render-content-wrap {
+  padding: 10px;
+  margin: 0 0 10px 0;
+}
+#mywp-debug .debug-renders .render .render-content-wrap .render-title {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 0 12px 0;
+  padding: 4px 8px;
+  line-height: 22px;
+  background: rgba(40, 140, 200, 0.4);
+  color: rgba(255, 255, 255, 0.8);
+}
+#mywp-debug .debug-renders .render .render-content-wrap .render-content ul,
+#mywp-debug .debug-renders .render .render-content-wrap .render-content ol {
+  margin: 0 0 0 18px;
+  list-style-positon: outside;
+}
+#mywp-debug .debug-renders .render .render-content-wrap .render-content ul {
+  list-style-type: disc;
+}
+#mywp-debug .debug-renders .render .render-content-wrap .render-content table.debug-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 2px;
+  margin: 0 0 12px 0;
+  color: #8E8E8E;
+  border: 0 none;
+}
+#mywp-debug .debug-renders .render .render-content-wrap .render-content table.debug-table caption {
+  text-align: left;
+  margin: 0 0 4px 0;
+  font-weight: bold;
+  color: #666;
+}
+#mywp-debug .debug-renders .render .render-content-wrap .render-content table.debug-table th,
+#mywp-debug .debug-renders .render .render-content-wrap .render-content table.debug-table td {
+  font-size: 12px;
+  text-align: left;
+  padding: 4px 8px;
+  border: 0 none;
+  background: none;
+  word-break: break-all;
+}
+#mywp-debug .debug-renders .render .render-content-wrap .render-content table.debug-table th {
+  font-weight: normal;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  width: 30%;
+}
+#mywp-debug .debug-renders .render .render-content-wrap .render-content textarea {
+  height: 160px;
+  width: 100%;
+  background-color: #bbb;
+  color: #555;
+}
+#mywp-debug .debug-renders .render .render-content-wrap .render-content pre {
+  background-color: #bbb;
+  color: #555;
+  padding: 4px 8px;
+}
+#mywp-debug .debug-renders .render .render-content-wrap .render-content pre a {
+  color: rgba(40, 140, 200, 1);
+}
+#mywp-debug .debug-renders .render .render-content-wrap .render-content a {
+  color: rgba(255, 150, 255, 0.7);
+}

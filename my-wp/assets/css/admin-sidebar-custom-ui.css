@@ -1,0 +1,143 @@
+body.wp-admin.mywp #adminmenuback,
+body.wp-admin.mywp #adminmenuwrap {
+  height: 100%;
+}
+body.wp-admin.mywp #adminmenuback {
+  background: none;
+}
+body.wp-admin.mywp #adminmenuwrap {
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: fixed;
+  box-shadow: 4px 0px 20px rgba( 0, 0, 0, 0.2 );
+}
+body.wp-admin.mywp #adminmenuwrap::-webkit-scrollbar {
+  width: 6px;
+}
+body.wp-admin.mywp #adminmenuwrap::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.6);
+  min-height: 30px;
+  box-shadow: inset 1px 1px 0 rgba(0,0,0,0.1), inset 0 -1px 0 rgba(0,0,0,0.07);
+  border-radius: 8px;
+}
+body.wp-admin.mywp #adminmenuwrap::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+body.wp-admin.mywp #adminmenuwrap::-webkit-scrollbar-corner {
+  background: transparent;
+}
+body.wp-admin.mywp.folded #adminmenuback,
+body.wp-admin.mywp.folded #adminmenuwrap {
+  width: 44px;
+}
+
+
+body.wp-admin.mywp #adminmenuwrap #adminmenu {
+  padding-bottom: 80px;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+body.wp-admin.mywp.folded #adminmenuwrap #adminmenu,
+body.wp-admin.mywp.folded #adminmenuwrap #adminmenu li.menu-top {
+  width: 44px;
+}
+
+@media screen and (max-width: 960px) {
+
+  body.wp-admin.mywp.auto-fold #adminmenuback,
+  body.wp-admin.mywp.auto-fold #adminmenuwrap,
+  body.wp-admin.mywp.auto-fold #adminmenuwrap #adminmenu,
+  body.wp-admin.mywp.auto-fold #adminmenuwrap #adminmenu li.menu-top {
+    width: 44px;
+  }
+  body.wp-admin.mywp.auto-fold #adminmenuwrap #adminmenu li.wp-menu-open .wp-submenu {
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 782px) {
+
+  body.wp-admin.mywp #adminmenuback,
+  body.wp-admin.mywp #adminmenuwrap,
+  body.wp-admin.mywp #adminmenuwrap #adminmenu,
+  body.wp-admin.mywp #adminmenuwrap #adminmenu li.menu-top,
+  body.wp-admin.mywp.auto-fold #adminmenuback,
+  body.wp-admin.mywp.auto-fold #adminmenuwrap,
+  body.wp-admin.mywp.auto-fold #adminmenuwrap #adminmenu,
+  body.wp-admin.mywp.auto-fold #adminmenuwrap #adminmenu li.menu-top {
+    width: 210px;
+  }
+  body.wp-admin.mywp.auto-fold #adminmenuback,
+  body.wp-admin.mywp.auto-fold #adminmenuwrap {
+    width: 210px;
+    display: block;
+    left: -210px;
+  }
+  body.wp-admin.mywp.auto-fold .wp-responsive-open #adminmenuback,
+  body.wp-admin.mywp.auto-fold .wp-responsive-open #adminmenuwrap {
+    left: 0;
+  }
+  body.wp-admin.mywp #adminmenuwrap #adminmenu {
+    background: none;
+  }
+  body.wp-admin.mywp .wp-responsive-open #wpbody {
+    right: auto;
+    position: relative;
+    -webkit-filter: blur( 4px );
+    filter: blur( 4px );
+  }
+  body.wp-admin.mywp #adminmenuwrap {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  body.wp-admin.mywp.admin-color-light #adminmenuwrap {
+    background: rgb(255, 255, 255, 0.8);
+  }
+
+}
+
+
+
+body.wp-admin.mywp #adminmenuwrap #adminmenu .wp-submenu {
+  position: relative;
+  left: auto;
+  top: auto;
+  display: none;
+}
+body.wp-admin.mywp #adminmenuwrap #adminmenu li.menu-top.item-type-custom:hover {
+  color: #444;
+  cursor: default;
+  background: none;
+}
+body.wp-admin.mywp #adminmenuwrap #adminmenu li.wp-menu-open .wp-submenu,
+body.wp-admin.mywp #adminmenuwrap #adminmenu li.selected .wp-submenu {
+  display: block;
+}
+body.wp-admin.mywp.folded #adminmenuwrap #adminmenu li.wp-menu-open .wp-submenu,
+body.wp-admin.mywp.folded #adminmenuwrap #adminmenu li.selected .wp-submenu {
+  display: none;
+}
+
+@media screen and (max-width: 782px) {
+
+  body.wp-admin.mywp #wpwrap.wp-responsive-open #sidebar-custom-menu-ui-mask {
+    background: rgba(255, 255, 255, 0.3);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2;
+  }
+  body.wp-admin.mywp.auto-fold #adminmenu li a {
+    font-size: 15px;
+  }
+  body.wp-admin.mywp #adminmenu li.mywp-sidebar-item .mywp-sidebar-item-childs .mywp-sidebar-item-link .mywp-sidebar-name {
+    padding: 10px 0;
+    font-size: 13px;
+    margin-left: 0;
+  }
+
+}

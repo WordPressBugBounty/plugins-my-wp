@@ -1,0 +1,17 @@
+body.wp-admin #mywp-custom-footer-text {
+  margin-left: 180px;
+  margin-bottom: 20px;
+}
+body.wp-admin.folded #mywp-custom-footer-text {
+  margin-left: 56px;
+}
+@media only screen and (max-width: 960px) {
+  body.wp-admin.auto-fold #mywp-custom-footer-text {
+    margin-left: 56px;
+  }
+}
+@media screen and ( max-width: 782px ) {
+  body.wp-admin.auto-fold #mywp-custom-footer-text {
+    margin-left: 0;
+  }
+}
