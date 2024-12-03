@@ -94,7 +94,7 @@ final class MywpPostTypeModuleAdminToolbar extends MywpPostTypeAbstractModule {
 
       if( $mywp_post->menu_order ) {
 
-        echo $mywp_post->menu_order;
+        echo esc_html( $mywp_post->menu_order );
 
       }
 
@@ -102,7 +102,7 @@ final class MywpPostTypeModuleAdminToolbar extends MywpPostTypeAbstractModule {
 
       if( $mywp_post->ID ) {
 
-        echo $mywp_post->ID;
+        echo esc_html( $mywp_post->ID );
 
       }
 
@@ -110,7 +110,7 @@ final class MywpPostTypeModuleAdminToolbar extends MywpPostTypeAbstractModule {
 
       if( $mywp_post->item_parent ) {
 
-        echo $mywp_post->item_parent;
+        echo esc_html( $mywp_post->item_parent );
 
       }
 
@@ -118,7 +118,7 @@ final class MywpPostTypeModuleAdminToolbar extends MywpPostTypeAbstractModule {
 
       if( $mywp_post->item_type ) {
 
-        echo $mywp_post->item_type;
+        echo esc_html( $mywp_post->item_type );
 
       }
 
@@ -126,13 +126,13 @@ final class MywpPostTypeModuleAdminToolbar extends MywpPostTypeAbstractModule {
 
       if( $mywp_post->item_link_title ) {
 
-        echo $mywp_post->item_link_title;
+        echo esc_html( $mywp_post->item_link_title );
 
       }
 
     } elseif( $column_name === 'info' ) {
 
-      printf( '<textarea class="large-text" readonly="readonly">%s</textarea>' , print_r( $mywp_post , true ) );
+      printf( '<textarea class="large-text" readonly="readonly">%s</textarea>' , esc_textarea( print_r( $mywp_post , true ) ) );
 
     }
 

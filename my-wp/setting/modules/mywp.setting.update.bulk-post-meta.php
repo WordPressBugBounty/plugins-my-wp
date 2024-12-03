@@ -961,11 +961,11 @@ final class MywpSettingScreenUpdateBulkPostMeta extends MywpAbstractSettingModul
               <th class="check">
                 <input type="checkbox" class="update-bulk-post-meta-select-post-id" value="<?php echo esc_attr( $post_id ); ?>" />
               </th>
-              <td class="id"><?php echo $post_id; ?></td>
-              <td class="type"><?php echo strip_tags( $post->post_type ); ?></td>
-              <td class="status"><?php echo strip_tags( $post->post_status ); ?></td>
-              <td class="title"><?php echo strip_tags( $post->post_title ); ?></td>
-              <td class="metas"><textarea readonly class="large-text"><?php print_r( get_post_meta( $post_id ) ); ?></textarea></td>
+              <td class="id"><?php echo esc_html( $post_id ); ?></td>
+              <td class="type"><?php echo esc_html( $post->post_type ); ?></td>
+              <td class="status"><?php echo esc_html( $post->post_status ); ?></td>
+              <td class="title"><?php echo esc_html( $post->post_title ); ?></td>
+              <td class="metas"><textarea readonly class="large-text"><?php echo esc_textarea( print_r( get_post_meta( $post_id ) , true ) ); ?></textarea></td>
             </tr>
 
           <?php endforeach; ?>
@@ -1019,7 +1019,7 @@ final class MywpSettingScreenUpdateBulkPostMeta extends MywpAbstractSettingModul
           </td>
           <td class="from-meta">
             <?php if( is_array( $from_meta_value ) or is_object( $from_meta_value ) ) : ?>
-              <textarea class="large-text" readonly="readonly"><?php print_r( $from_meta_value ); ?></textarea>
+              <textarea class="large-text" readonly="readonly"><?php echo esc_textarea( print_r( $from_meta_value , true ) ); ?></textarea>
             <?php else : ?>
               <?php echo esc_html( $from_meta_value ); ?>
             <?php endif; ?>
@@ -1029,7 +1029,7 @@ final class MywpSettingScreenUpdateBulkPostMeta extends MywpAbstractSettingModul
           </td>
           <td class="to-meta">
             <?php if( is_array( $bulk_meta_value_unserialize ) or is_object( $bulk_meta_value_unserialize ) ) : ?>
-              <textarea class="large-text" readonly="readonly"><?php print_r( $bulk_meta_value_unserialize ); ?></textarea>
+              <textarea class="large-text" readonly="readonly"><?php echo esc_textarea( print_r( $bulk_meta_value_unserialize , true ) ); ?></textarea>
             <?php else : ?>
               <?php echo esc_html( $bulk_meta_value ); ?>
             <?php endif; ?>
@@ -1043,7 +1043,6 @@ final class MywpSettingScreenUpdateBulkPostMeta extends MywpAbstractSettingModul
     <?php
 
   }
-
 
 }
 

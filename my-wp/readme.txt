@@ -2,9 +2,9 @@
 Contributors: gqevu6bsiz
 Tags: admin, frontend, debug, sidebar, toolbar
 Requires at least: 4.7
-Tested up to: 6.6
+Tested up to: 6.7
 Requires PHP: 5.6
-Stable tag: 1.24.0
+Stable tag: 1.24.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -91,6 +91,12 @@ The demo site is here: [https://playground.wordpress.net/?plugin=my-wp&url=/wp-a
 10. Developer panel on footer.
 
 == Changelog ==
+
+= 1.24.1 2024-12-03 =
+* Updated: For WordPress 6.7.
+* Changed: How to get the wp version and offset seconds.
+* Changed: Late include the JS and CSS on admin and frontend and login.
+* Fixed: Escape and sanitize the some values.
 
 = 1.24.0 2024-08-06 =
 * Added: Deprecated list columns on Posts, Comments, Users, Uploads, Terms.

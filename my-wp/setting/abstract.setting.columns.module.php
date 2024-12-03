@@ -516,6 +516,14 @@ abstract class MywpAbstractSettingColumnsModule extends MywpAbstractSettingModul
 
     }
 
+    $wp_kses_allowed_html = wp_kses_allowed_html( 'post' );
+
+    $wp_kses_allowed_html['input'] = array(
+      'type' => 1,
+      'class' => 1,
+      'id' => 1,
+    );
+
     ?>
 
     <div class="list-column-item-header">
@@ -528,7 +536,7 @@ abstract class MywpAbstractSettingColumnsModule extends MywpAbstractSettingModul
 
           <?php if( ! empty( $column['title'] ) ) : ?>
 
-            <?php echo strip_shortcodes( $column['title'] ); ?>
+            <?php echo wp_kses( strip_shortcodes( $column['title'] ) , $wp_kses_allowed_html ); ?>
 
           <?php endif; ?>
 
@@ -538,7 +546,7 @@ abstract class MywpAbstractSettingColumnsModule extends MywpAbstractSettingModul
 
           <?php if( ! empty( $column['default_title'] ) ) : ?>
 
-            (<?php echo esc_attr( $column['default_title'] ); ?>)
+            (<?php echo esc_html( $column['default_title'] ); ?>)
 
           <?php endif; ?>
 

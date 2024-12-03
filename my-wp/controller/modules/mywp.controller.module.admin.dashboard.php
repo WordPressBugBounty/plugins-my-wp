@@ -158,7 +158,7 @@ final class MywpControllerModuleAdminDashboard extends MywpControllerAbstractMod
 
     foreach( $hide_meta_boxes as $meta_box_id ) {
 
-      printf( '.postbox#%s { height: 0; overflow: hidden; margin: 0; box-shadow: none; border: 0 none; }' , $meta_box_id );
+      printf( '.postbox#%s { height: 0; overflow: hidden; margin: 0; box-shadow: none; border: 0 none; }' , esc_attr( $meta_box_id ) );
 
     }
 
@@ -168,7 +168,7 @@ final class MywpControllerModuleAdminDashboard extends MywpControllerAbstractMod
 
     foreach( $hide_meta_boxes as $meta_box_id ) {
 
-      printf( '$("#screen-options-wrap .metabox-prefs label[for=%s-hide]").css("display", "none");' , $meta_box_id );
+      printf( '$("#screen-options-wrap .metabox-prefs label[for=%s-hide]").css("display", "none");' , esc_attr( $meta_box_id ) );
 
     }
 
@@ -348,7 +348,7 @@ final class MywpControllerModuleAdminDashboard extends MywpControllerAbstractMod
 
           }
 
-          $wp_meta_boxes['dashboard'][ $context ][ $priority ][ $meta_box_id ]['title'] = do_shortcode( $change_title_meta_boxes[ $meta_box_id ] );
+          $wp_meta_boxes['dashboard'][ $context ][ $priority ][ $meta_box_id ]['title'] = wp_kses_post( do_shortcode( $change_title_meta_boxes[ $meta_box_id ] ) );
 
         }
 

@@ -420,7 +420,7 @@ final class MywpSettingScreenAdminSidebar extends MywpAbstractSettingModule {
 
       } elseif( in_array( $meta_key , array( 'item_link_title' , 'item_custom_html' , 'item_icon_title' ) ) ) {
 
-        $meta_value = wp_unslash( $meta_value );
+        $meta_value = wp_unslash( wp_kses_post( $meta_value ) );
 
       } else {
 
@@ -2504,7 +2504,7 @@ final class MywpSettingScreenAdminSidebar extends MywpAbstractSettingModule {
 
     } elseif( $field_name === 'item_custom_html' ) {
 
-      printf( '<textarea class="item_custom_html large-text" placeholder="%s">%s</textarea>' , esc_attr( '<div class="" style="">Custom HTML</div>...' ) , $value );
+      printf( '<textarea class="item_custom_html large-text" placeholder="%s">%s</textarea>' , esc_attr( '<div class="" style="">Custom HTML</div>...' ) , esc_textarea( wp_kses_post( $value ) ) );
 
     } elseif( $field_name === 'item_li_class' ) {
 
@@ -2536,7 +2536,7 @@ final class MywpSettingScreenAdminSidebar extends MywpAbstractSettingModule {
 
       }
 
-      printf( '<input type="text" class="item_link_title large-text" value="%s" placeholder="%s" />' , esc_attr( $value ) , esc_attr( $default_title ) );
+      printf( '<input type="text" class="item_link_title large-text" value="%s" placeholder="%s" />' , esc_attr( wp_kses_post( $value ) ) , esc_attr( $default_title ) );
 
     } elseif( $field_name === 'item_link_attr' ) {
 
@@ -2561,7 +2561,7 @@ final class MywpSettingScreenAdminSidebar extends MywpAbstractSettingModule {
 
     } elseif( $field_name === 'item_icon_title' ) {
 
-      printf( '<input type="text" class="item_icon_title large-text" value="%s" placeholder="%s" />' , esc_attr( $value ) , esc_attr( 'Icon Html' ) );
+      printf( '<input type="text" class="item_icon_title large-text" value="%s" placeholder="%s" />' , esc_attr( wp_kses_post( $value ) ) , esc_attr( 'Icon Html' ) );
 
     } else {
 

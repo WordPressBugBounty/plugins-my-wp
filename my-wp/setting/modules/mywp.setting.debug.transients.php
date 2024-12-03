@@ -199,7 +199,6 @@ final class MywpSettingScreenDebugTransients extends MywpAbstractSettingModule {
     }
 
     $timezone_format = _x( 'Y-m-d H:i:s' , 'timezone date format' );
-    $offset = get_option( 'gmt_offset' ) * HOUR_IN_SECONDS;
     $timezone = get_option( 'timezone_string' );
 
     ?>
@@ -231,7 +230,7 @@ final class MywpSettingScreenDebugTransients extends MywpAbstractSettingModule {
             </th>
             <td>
               <?php if( ! empty( $transient['timeout'] ) ) : ?>
-                <p><?php echo date( $timezone_format , $transient['timeout']['value'] + $offset ); ?> (<?php echo $timezone; ?>)</p>
+                <p><?php echo date( $timezone_format , $transient['timeout']['value'] + MywpHelper::get_gmt_offset_seconds() ); ?> (<?php echo $timezone; ?>)</p>
                 <input type="text" readonly="readonly" class="large-text" value="<?php echo esc_attr( $transient['timeout']['value'] ); ?>" /><br />
               <?php else : ?>
                 <?php _e( 'Not found timeout date.' , 'my-wp' ); ?>
@@ -244,7 +243,7 @@ final class MywpSettingScreenDebugTransients extends MywpAbstractSettingModule {
               </p>
             </td>
             <td>
-              <textarea readonly="readonly" class="large-text" style="height: 160px;"><?php print_r( maybe_unserialize( $transient['value'] ) ); ?></textarea>
+              <textarea readonly="readonly" class="large-text" style="height: 160px;"><?php echo esc_textarea( print_r( maybe_unserialize( $transient['value'] ) , true ) ); ?></textarea>
             </td>
           </tr>
 

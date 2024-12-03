@@ -1002,7 +1002,7 @@ final class MywpControllerModuleAdminSidebar extends MywpControllerAbstractModul
 
     if( $item_type === 'custom' ) {
 
-      echo do_shortcode( $item->item_custom_html );
+      echo wp_kses_post( do_shortcode( $item->item_custom_html ) );
 
     } elseif( $item_type === 'separator' ) {
 
@@ -1082,7 +1082,7 @@ final class MywpControllerModuleAdminSidebar extends MywpControllerAbstractModul
 
       } elseif( ! empty( $icon_class ) or ! empty( $icon_style ) or ! empty( $icon_id ) ) {
 
-        printf( '<div class="wp-menu-image mywp-sidebar-item-icon %s" id="%s" style="%s">%s</div>'  , esc_attr( $icon_class ) , esc_attr( $icon_id ) , $icon_style , $icon_title );
+        printf( '<div class="wp-menu-image mywp-sidebar-item-icon %s" id="%s" style="%s">%s</div>'  , esc_attr( $icon_class ) , esc_attr( $icon_id ) , esc_attr( $icon_style ) , wp_kses_post( $icon_title ) );
 
       } else {
 
@@ -1090,7 +1090,7 @@ final class MywpControllerModuleAdminSidebar extends MywpControllerAbstractModul
 
       }
 
-      printf( '<div class="wp-menu-name mywp-sidebar-name">%s</div>' , $item->item_link_title );
+      printf( '<div class="wp-menu-name mywp-sidebar-name">%s</div>' , wp_kses_post( $item->item_link_title ) );
 
       echo '</a>';
 
@@ -1100,7 +1100,7 @@ final class MywpControllerModuleAdminSidebar extends MywpControllerAbstractModul
 
         echo '<ul class="wp-submenu wp-submenu-wrap mywp-sidebar-item-childs">';
 
-        printf( '<li class="wp-submenu-head" aria-hidden="true">%s</li>' , $item->item_link_title );
+        printf( '<li class="wp-submenu-head" aria-hidden="true">%s</li>' , wp_kses_post( $item->item_link_title ) );
 
         foreach( $child_items as $child_item ) {
 

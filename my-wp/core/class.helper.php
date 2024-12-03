@@ -256,6 +256,34 @@ final class MywpHelper {
 
   }
 
+  public static function get_gmt_offset_seconds() {
+
+    $gmt_offset = (float) get_option( 'gmt_offset' );
+
+    $gmt_offset_seconds = (int) ( $gmt_offset * HOUR_IN_SECONDS );
+
+    return $gmt_offset_seconds;
+
+  }
+
+  public static function get_wp_version() {
+
+    global $wp_version;
+
+    if( function_exists( 'wp_get_wp_version' ) ) {
+
+      $version = wp_get_wp_version();
+
+    } else {
+
+      $version = $wp_version;
+
+    }
+
+    return $wp_version;
+
+  }
+
   public static function sanitize_text( $value ) {
 
     $value = sanitize_text_field( $value );

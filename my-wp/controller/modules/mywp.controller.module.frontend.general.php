@@ -102,7 +102,7 @@ final class MywpControllerModuleFrontendGeneral extends MywpControllerAbstractMo
 
     add_action( 'wp_head' , array( __CLASS__ , 'wp_head' ) );
 
-    add_action( 'wp_enqueue_scripts' , array( __CLASS__ , 'wp_enqueue_scripts' ) );
+    add_action( 'wp_enqueue_scripts' , array( __CLASS__ , 'include_jc_css' ) , 9999 );
 
   }
 
@@ -410,7 +410,7 @@ final class MywpControllerModuleFrontendGeneral extends MywpControllerAbstractMo
 
   }
 
-  public static function wp_enqueue_scripts() {
+  public static function include_jc_css() {
 
     if( ! self::is_do_function( __FUNCTION__ ) ) {
 

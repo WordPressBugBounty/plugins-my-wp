@@ -110,7 +110,7 @@ final class MywpControllerModuleAdminGeneral extends MywpControllerAbstractModul
 
     add_action( 'admin_enqueue_scripts' , array( __CLASS__ , 'admin_enqueue_scripts' ) );
 
-    add_action( 'admin_enqueue_scripts' , array( __CLASS__ , 'include_jc_css' ) );
+    add_action( 'admin_enqueue_scripts' , array( __CLASS__ , 'include_jc_css' ) , 9999 );
 
     add_action( 'admin_print_styles' , array( __CLASS__ , 'hide_screen_tabs' ) );
 
@@ -471,7 +471,6 @@ final class MywpControllerModuleAdminGeneral extends MywpControllerAbstractModul
 
   public static function custom_footer_text() {
 
-    global $wp_version;
     global $post;
 
     if( ! self::is_do_function( __FUNCTION__ ) ) {
@@ -498,7 +497,7 @@ final class MywpControllerModuleAdminGeneral extends MywpControllerAbstractModul
     add_filter( 'mywp_controller_admin_general_custom_footer_text' , 'shortcode_unautop' );
     add_filter( 'mywp_controller_admin_general_custom_footer_text' , 'prepend_attachment' );
 
-    if( version_compare( $wp_version , '5.7.0' , '>=' ) ) {
+    if( version_compare( MywpHelper::get_wp_version() , '5.7.0' , '>=' ) ) {
 
       add_filter( 'mywp_controller_admin_general_custom_footer_text' , 'wp_replace_insecure_home_url' );
 
@@ -506,7 +505,7 @@ final class MywpControllerModuleAdminGeneral extends MywpControllerAbstractModul
 
     add_filter( 'mywp_controller_admin_general_custom_footer_text' , 'do_shortcode' , 11 );
 
-    if( version_compare( $wp_version , '5.5.0' , '>=' ) ) {
+    if( version_compare( MywpHelper::get_wp_version() , '5.5.0' , '>=' ) ) {
 
       add_filter( 'mywp_controller_admin_general_custom_footer_text' , 'wp_filter_content_tags' , 12 );
 
@@ -523,7 +522,7 @@ final class MywpControllerModuleAdminGeneral extends MywpControllerAbstractModul
     <div class="clear"></div>
 
     <div id="mywp-custom-footer-text">
-      <?php echo $custom_footer_text; ?>
+      <?php echo wp_kses_post( $custom_footer_text ); ?>
     </div>
 
     <?php

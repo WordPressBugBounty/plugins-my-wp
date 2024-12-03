@@ -73,7 +73,7 @@ final class MywpSettingScreenDebugDatetime extends MywpAbstractSettingModule {
         </tr>
         <tr>
           <th>date( "Y-m-d H:i:s" , time() + ( get_option( "gmt_offset" ) * HOUR_IN_SECONDS ) )</th>
-          <td><?php echo date( "Y-m-d H:i:s" , time() + ( get_option( "gmt_offset" ) * HOUR_IN_SECONDS ) ); ?></td>
+          <td><?php echo date( "Y-m-d H:i:s" , time() + MywpHelper::get_gmt_offset_seconds() ); ?></td>
         </tr>
         <tr>
           <th>gmdate( "Y-m-d H:i:s" )</th>

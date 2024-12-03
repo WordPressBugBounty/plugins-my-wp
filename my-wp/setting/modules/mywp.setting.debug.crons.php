@@ -49,7 +49,6 @@ final class MywpSettingScreenDebugCrons extends MywpAbstractSettingModule {
     }
 
     $timezone_format = _x( 'Y-m-d H:i:s' , 'timezone date format' );
-    $offset = get_option( 'gmt_offset' ) * HOUR_IN_SECONDS;
     $timezone = get_option( 'timezone_string' );
 
     ?>
@@ -66,15 +65,15 @@ final class MywpSettingScreenDebugCrons extends MywpAbstractSettingModule {
 
           <tr>
             <th>
-              <?php echo key( $cron ); ?>
+              <?php echo esc_html( key( $cron ) ); ?>
             </th>
             <td>
-              <p><?php echo date( $timezone_format , $timestamp + $offset ); ?> (<?php echo $timezone; ?>)</p>
+              <p><?php echo date( $timezone_format , $timestamp + MywpHelper::get_gmt_offset_seconds() ); ?> (<?php echo $timezone; ?>)</p>
               <input type="text" readonly="readonly" class="large-text" value="<?php echo esc_attr( $timestamp ); ?>" /><br />
               <?php _e( 'RAW' ); ?>: <?php echo date( $timezone_format , $timestamp ); ?> (<?php _e( 'UTC' ); ?>)
             </td>
             <td>
-              <textarea readonly="readonly" class="large-text" style="height: 160px;"><?php print_r( $cron ); ?></textarea>
+              <textarea readonly="readonly" class="large-text" style="height: 160px;"><?php echo esc_textarea( print_r( $cron , true ) ); ?></textarea>
             </td>
           </tr>
 

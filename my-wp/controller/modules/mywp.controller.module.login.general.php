@@ -44,8 +44,6 @@ final class MywpControllerModuleLoginGeneral extends MywpControllerAbstractModul
 
   public static function mywp_wp_loaded() {
 
-    global $wp_version;
-
     if( is_admin() ) {
 
       return false;
@@ -58,7 +56,7 @@ final class MywpControllerModuleLoginGeneral extends MywpControllerAbstractModul
 
     }
 
-    add_action( 'login_enqueue_scripts' , array( __CLASS__ , 'include_css' ) );
+    add_action( 'login_enqueue_scripts' , array( __CLASS__ , 'include_css' ) , 9999 );
 
     add_action( 'wp_print_scripts' , array( __CLASS__ , 'input_css' ) );
 
@@ -68,7 +66,7 @@ final class MywpControllerModuleLoginGeneral extends MywpControllerAbstractModul
 
     add_filter( 'login_headerurl' , array( __CLASS__ , 'logo_link_url' ) );
 
-    if( version_compare( $wp_version , '5.2.0' , '>=' ) ) {
+    if( version_compare( MywpHelper::get_wp_version() , '5.2.0' , '>=' ) ) {
 
       add_filter( 'login_headertext' , array( __CLASS__ , 'logo_title' ) );
 
@@ -162,7 +160,7 @@ final class MywpControllerModuleLoginGeneral extends MywpControllerAbstractModul
 
     if( ! empty( $logo_image_path ) ) {
 
-      printf( '.login h1 a { background-image: url(%s); }' , esc_attr( $logo_image_path ) );
+      printf( '.login h1 a, .login .wp-login-logo a { background-image: url(%s); }' , esc_attr( $logo_image_path ) );
 
     }
 
@@ -270,7 +268,6 @@ final class MywpControllerModuleLoginGeneral extends MywpControllerAbstractModul
 
   public static function custom_footer_text() {
 
-    global $wp_version;
     global $post;
 
     if( ! self::is_do_function( __FUNCTION__ ) ) {
@@ -297,7 +294,7 @@ final class MywpControllerModuleLoginGeneral extends MywpControllerAbstractModul
     add_filter( 'mywp_controller_login_general_custom_footer_text' , 'shortcode_unautop' );
     add_filter( 'mywp_controller_login_general_custom_footer_text' , 'prepend_attachment' );
 
-    if( version_compare( $wp_version , '5.7.0' , '>=' ) ) {
+    if( version_compare( MywpHelper::get_wp_version() , '5.7.0' , '>=' ) ) {
 
       add_filter( 'mywp_controller_login_general_custom_footer_text' , 'wp_replace_insecure_home_url' );
 
@@ -305,7 +302,7 @@ final class MywpControllerModuleLoginGeneral extends MywpControllerAbstractModul
 
     add_filter( 'mywp_controller_login_general_custom_footer_text' , 'do_shortcode' , 11 );
 
-    if( version_compare( $wp_version , '5.5.0' , '>=' ) ) {
+    if( version_compare( MywpHelper::get_wp_version() , '5.5.0' , '>=' ) ) {
 
       add_filter( 'mywp_controller_login_general_custom_footer_text' , 'wp_filter_content_tags' , 12 );
 
@@ -316,7 +313,7 @@ final class MywpControllerModuleLoginGeneral extends MywpControllerAbstractModul
     ?>
 
     <div id="mywp-custom-footer-text">
-      <?php echo $custom_footer_text; ?>
+      <?php echo wp_kses_post( $custom_footer_text ); ?>
     </div>
 
     <?php

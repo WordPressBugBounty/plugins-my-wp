@@ -498,11 +498,19 @@ final class MywpControllerModuleAdminPosts extends MywpAbstractControllerListMod
 
     }
 
+    $wp_kses_allowed_html = wp_kses_allowed_html( 'post' );
+
+    $wp_kses_allowed_html['input'] = array(
+      'type' => 1,
+      'class' => 1,
+      'id' => 1,
+    );
+
     $columns = array();
 
     foreach( $setting_data['list_columns'] as $column_id => $column_setting ) {
 
-      $columns[ $column_id ] = do_shortcode( $column_setting['title'] );
+      $columns[ $column_id ] = wp_kses( do_shortcode( $column_setting['title'] ) , $wp_kses_allowed_html );
 
     }
 
@@ -544,7 +552,7 @@ final class MywpControllerModuleAdminPosts extends MywpAbstractControllerListMod
 
     } elseif( $column_id === 'mywp_column_slug' ) {
 
-      echo sanitize_title( $post->post_name );
+      echo esc_html( $post->post_name );
 
     } elseif( $column_id === 'mywp_column_excerpt' ) {
 
@@ -968,25 +976,35 @@ final class MywpControllerModuleAdminPosts extends MywpAbstractControllerListMod
 
   }
 
-  private static function get_post_statuses() {
+  private static function get_post_statuses( $post_type = false ) {
 
     global $wp_post_statuses;
 
     $post_statuses = array();
 
+    $post_type = MywpHelper::sanitize_text( $post_type );
+
+    if( empty( $post_type ) ) {
+
+      return $post_statuses;
+
+    }
+
     foreach( $wp_post_statuses as $post_status => $wp_post_status ) {
 
-      /*
-      if( ! in_array( $post_status , array( 'draft' , 'publish' , 'trash' , 'private' ) ) ) {
+      if( in_array( $post_status , array( 'auto-draft' ) ) ) {
 
         continue;
 
       }
-      */
 
       $post_statuses[ $post_status ] = $wp_post_status->label;
 
     }
+
+    $post_statuses = apply_filters( 'mywp_controller_admin_posts_get_post_statuses' , $post_statuses , $post_type );
+
+    $post_statuses = apply_filters( 'mywp_controller_admin_posts_get_post_statuses-' . $post_type , $post_statuses );
 
     return $post_statuses;
 
@@ -1030,7 +1048,7 @@ final class MywpControllerModuleAdminPosts extends MywpAbstractControllerListMod
 
       $post_status = MywpHelper::sanitize_text( $custom_search_filter_requests['mywp_custom_search_post_status'] );
 
-      $post_statuses = self::get_post_statuses();
+      $post_statuses = self::get_post_statuses( self::$post_type );
 
       if( ! empty( $post_statuses[ $post_status ] ) ) {
 
@@ -1131,7 +1149,7 @@ final class MywpControllerModuleAdminPosts extends MywpAbstractControllerListMod
           'taxonomy' => $taxonomy_name,
           'field' => 'term_id',
           'terms' => $term_ids,
-          'operator' => 'AND',
+          'operator' => 'IN',
         );
 
       }
@@ -1181,7 +1199,7 @@ final class MywpControllerModuleAdminPosts extends MywpAbstractControllerListMod
       ),
     );
 
-    $post_statuses = self::get_post_statuses();
+    $post_statuses = self::get_post_statuses( self::$post_type );
 
     $custom_search_filter_fields['mywp_custom_search_post_status']['choices'] = $post_statuses;
 

@@ -329,11 +329,19 @@ final class MywpControllerModuleAdminTerms extends MywpControllerAbstractModule 
 
     }
 
+    $wp_kses_allowed_html = wp_kses_allowed_html( 'post' );
+
+    $wp_kses_allowed_html['input'] = array(
+      'type' => 1,
+      'class' => 1,
+      'id' => 1,
+    );
+
     $columns = array();
 
     foreach( $setting_data['list_columns'] as $column_id => $column_setting ) {
 
-      $columns[ $column_id ] = do_shortcode( $column_setting['title'] );
+      $columns[ $column_id ] = wp_kses( do_shortcode( $column_setting['title'] ) , $wp_kses_allowed_html );
 
     }
 

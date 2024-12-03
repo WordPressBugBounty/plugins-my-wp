@@ -29,8 +29,6 @@ final class MywpDeveloperModuleCoreEnvironment extends MywpDeveloperAbstractModu
 
   protected static function get_debug_lists() {
 
-    global $wp_version;
-
     $debug_lists = array();
 
     $defines = array(
@@ -58,7 +56,7 @@ final class MywpDeveloperModuleCoreEnvironment extends MywpDeveloperAbstractModu
 
     }
 
-    $debug_lists['$wp_version'] = $wp_version;
+    $debug_lists['wp_version'] = MywpHelper::get_wp_version();
     $debug_lists['is_multisite()'] = is_multisite();
     $debug_lists['PHP_VERSION'] = PHP_VERSION;
 

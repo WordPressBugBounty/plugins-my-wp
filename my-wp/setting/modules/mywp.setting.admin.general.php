@@ -307,7 +307,7 @@ final class MywpSettingScreenAdminGeneral extends MywpAbstractSettingModule {
 
     if( ! empty( $formatted_data['custom_footer_text'] ) ) {
 
-      $new_formatted_data['custom_footer_text'] = wp_unslash( $formatted_data['custom_footer_text'] );
+      $new_formatted_data['custom_footer_text'] = wp_unslash( wp_kses_post( $formatted_data['custom_footer_text'] ) );
 
     }
 

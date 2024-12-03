@@ -1107,7 +1107,7 @@ abstract class MywpAbstractControllerToolbarModule extends MywpControllerAbstrac
 
     } elseif( $item_type === 'custom' ) {
 
-      $item_meta['html'] = do_shortcode( $item->item_custom_html );
+      $item_meta['html'] = wp_kses_post( do_shortcode( $item->item_custom_html ) );
 
     }
 
@@ -1133,13 +1133,13 @@ abstract class MywpAbstractControllerToolbarModule extends MywpControllerAbstrac
 
     } else {
 
-      $title = sprintf( '<span class="%s">%s</span>' , esc_attr( $title_class ) , $item->item_link_title );
+      $title = sprintf( '<span class="%s">%s</span>' , esc_attr( $title_class ) , wp_kses_post( $item->item_link_title ) );
 
     }
 
     if( empty( $node_group ) ) {
 
-      $add_menu = array( 'id' => $node_id , 'title' => $title , 'parent' => $node_parent , 'href' => $item->item_link_url , 'meta' => $item_meta );
+      $add_menu = array( 'id' => $node_id , 'title' => wp_kses_post( $title ) , 'parent' => $node_parent , 'href' => $item->item_link_url , 'meta' => $item_meta );
 
       $wp_admin_bar->add_menu( $add_menu );
 

@@ -119,7 +119,7 @@ final class MywpSettingScreenAdminDashboard extends MywpAbstractSettingModule {
 
         if( ! empty( $meta_box_setting['title'] ) ) {
 
-          $new_meta_box_setting['title'] = wp_unslash( $meta_box_setting['title'] );
+          $new_meta_box_setting['title'] = wp_unslash( wp_kses_post( $meta_box_setting['title'] ) );
 
         }
 

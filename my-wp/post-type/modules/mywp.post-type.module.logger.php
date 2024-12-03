@@ -145,7 +145,7 @@ final class MywpPostTypeModuleLogger extends MywpPostTypeAbstractModule {
 
     } elseif( $column_name === 'log' ) {
 
-      printf( '<textarea class="large-text" readonly="readonly">%s</textarea>' , print_r( $mywp_post->log , true ) );
+      printf( '<textarea class="large-text" readonly="readonly">%s</textarea>' , esc_textarea( print_r( $mywp_post->log , true ) ) );
 
     }
 

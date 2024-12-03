@@ -828,6 +828,14 @@ final class MywpSettingScreenAdminPosts extends MywpAbstractSettingColumnsModule
 
     if( ! empty( $formatted_data['list_columns'] ) ) {
 
+      $wp_kses_allowed_html = wp_kses_allowed_html( 'post' );
+
+      $wp_kses_allowed_html['input'] = array(
+        'type' => 1,
+        'class' => 1,
+        'id' => 1,
+      );
+
       foreach( $formatted_data['list_columns'] as $list_column_id => $list_column_setting ) {
 
         $list_column_id = strip_tags( $list_column_id );
@@ -842,7 +850,7 @@ final class MywpSettingScreenAdminPosts extends MywpAbstractSettingColumnsModule
 
         if( ! empty( $list_column_setting['title'] ) ) {
 
-          $new_list_column_setting['title'] = wp_unslash( $list_column_setting['title'] );
+          $new_list_column_setting['title'] = wp_unslash( wp_kses( $list_column_setting['title'] , $wp_kses_allowed_html ) );
 
         }
 

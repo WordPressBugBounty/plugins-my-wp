@@ -974,7 +974,7 @@ final class MywpControllerModuleAdminPostEdit extends MywpControllerAbstractModu
 
           }
 
-          $wp_meta_boxes[ self::$post_type ][ $context ][ $priority ][ $meta_box_id ]['title'] = do_shortcode( $change_title_meta_boxes[ $meta_box_id ] );
+          $wp_meta_boxes[ self::$post_type ][ $context ][ $priority ][ $meta_box_id ]['title'] = wp_kses_post( do_shortcode( $change_title_meta_boxes[ $meta_box_id ] ) );
 
         }
 
