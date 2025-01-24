@@ -16,6 +16,63 @@ final class MywpDeveloper {
 
   }
 
+  public static function is_debug_item( $debug_item = false ) {
+
+    if( empty( $debug_item ) ) {
+
+      return false;
+
+    }
+
+    if( ! is_string( $debug_item ) ) {
+
+      return false;
+
+    }
+
+    if( ! class_exists( 'MywpControllerModuleDebugGeneral' ) ) {
+
+      return true;
+
+    }
+
+    $setting_data = MywpControllerModuleDebugGeneral::get_setting_data();
+
+    $debug_items = array(
+      'mywp_cache',
+      'debug_request',
+      'debug_time',
+      'debug_action',
+      'debug_debugtrace',
+    );
+
+    if( ! in_array( $debug_item , $debug_items , true ) ) {
+
+      return false;
+
+    }
+
+    $is_debug_item = false;
+
+    if( isset( $setting_data[ $debug_item ] ) ) {
+
+      $is_debug_item = $setting_data[ $debug_item ];
+
+    }
+
+    $is_debug_item = apply_filters( "mywp_is_debug_item_{$debug_item}" , $is_debug_item );
+    $is_debug_item = apply_filters( 'mywp_is_debug_item' , $is_debug_item , $debug_item );
+
+    if( ! $is_debug_item ) {
+
+      return false;
+
+    }
+
+    return true;
+
+  }
+
   public static function get_debug_types() {
 
     $debug_types = array();

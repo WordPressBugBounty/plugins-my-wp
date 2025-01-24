@@ -37,6 +37,14 @@ final class MywpDeveloperModuleMywpCache extends MywpDeveloperAbstractModule {
 
   protected static function mywp_developer_debug() {
 
+    if( ! MywpDeveloper::is_debug_item( 'mywp_cache' ) ) {
+
+      echo esc_html( __( 'Not activated.' , 'my-wp' ) );
+
+      return false;
+
+    }
+
     $caches = self::get_caches();
 
     echo 'Mywp caches = ';
@@ -52,6 +60,15 @@ final class MywpDeveloperModuleMywpCache extends MywpDeveloperAbstractModule {
   }
 
   protected static function mywp_debug_render() {
+
+    if( ! MywpDeveloper::is_debug_item( 'mywp_cache' ) ) {
+
+      echo esc_html( __( 'Not activated.' , 'my-wp' ) );
+
+      return false;
+
+    }
+
 
     $caches = self::get_caches();
 

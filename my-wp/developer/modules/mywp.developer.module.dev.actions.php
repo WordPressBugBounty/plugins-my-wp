@@ -55,6 +55,14 @@ final class MywpDeveloperModuleDevActions extends MywpDeveloperAbstractModule {
 
   protected static function mywp_developer_debug() {
 
+    if( ! MywpDeveloper::is_debug_item( 'debug_action' ) ) {
+
+      echo esc_html( __( 'Not activated.' , 'my-wp' ) );
+
+      return false;
+
+    }
+
     $actions = self::get_wp_actions();
 
     echo '$wp_actions = ' . "\n";
@@ -85,9 +93,17 @@ final class MywpDeveloperModuleDevActions extends MywpDeveloperAbstractModule {
 
   protected static function mywp_debug_render() {
 
+    if( ! MywpDeveloper::is_debug_item( 'debug_action' ) ) {
+
+      echo esc_html( __( 'Not activated.' , 'my-wp' ) );
+
+      return false;
+
+    }
+
     $actions = self::get_wp_actions();
 
-    echo '<ul class="core-actions">';
+    echo '<ol class="core-actions">';
 
     foreach( $actions as $wp_action => $count ) {
 
@@ -105,6 +121,19 @@ final class MywpDeveloperModuleDevActions extends MywpDeveloperAbstractModule {
 
       if( ! empty( $filter_to_func ) ) {
 
+        echo '<textarea readonly="readonly" class="large-text" style="height: 100px;">';
+
+        foreach( $filter_to_func as $func ) {
+
+          echo esc_html( sprintf( '(%d) %s' , $func['priority'] , $func['print_format'] ) );
+
+          echo "\n";
+
+        }
+
+        echo '</textarea>';
+
+        /*
         echo '<ul class="core-action-filters">';
 
         foreach( $filter_to_func as $func ) {
@@ -118,6 +147,7 @@ final class MywpDeveloperModuleDevActions extends MywpDeveloperAbstractModule {
         }
 
         echo '</ul>';
+        */
 
       }
 
@@ -125,23 +155,7 @@ final class MywpDeveloperModuleDevActions extends MywpDeveloperAbstractModule {
 
     }
 
-    echo '</ul>';
-
-  }
-
-  public static function mywp_debug_render_footer() {
-
-?>
-<style>
-#mywp-debug .core-actions .core-action.mywp-action {
-  background: rgba(255, 150, 0, 0.1);
-  color: #AEAEAE;
-}
-#mywp-debug .core-actions .core-action .priority {
-  background: rgba(0, 0, 0, 0.2);
-}
-</style>
-<?php
+    echo '</ol>';
 
   }
 

@@ -1660,10 +1660,18 @@ final class MywpSettingScreenAdminSidebar extends MywpAbstractSettingModule {
 
       $parent_menu_id = $menu[2];
 
+      $parent_menu_title = $menu[0];
+
+      if( ! empty( $parent_menu_title ) ) {
+
+        $parent_menu_title = strip_tags( strip_shortcodes( $parent_menu_title ) );
+
+      }
+
       $item_icon = self::get_item_icon( $menu );
 
       $available_sidebar_items[] = array(
-        'title' => strip_tags( strip_shortcodes( $menu[0] ) ),
+        'title' => $parent_menu_title,
         'item_type' => 'default',
         'item_default_type' => 'menu',
         'item_default_id' => $parent_menu_id,
@@ -1682,8 +1690,16 @@ final class MywpSettingScreenAdminSidebar extends MywpAbstractSettingModule {
 
           $child_menu_id = $submenu[2];
 
+          $child_menu_title = $submenu[0];
+
+          if( ! empty( $child_menu_title ) ) {
+
+            $child_menu_title = strip_tags( strip_shortcodes( $child_menu_title ) );
+
+          }
+
           $available_sidebar_items[] = array(
-            'title' => '&#160;&#160;-&#160;&#160;' . strip_tags( strip_shortcodes( $submenu[0] ) ),
+            'title' => '&#160;&#160;-&#160;&#160;' . $child_menu_title,
             'item_type' => 'default',
             'item_default_type' => 'submenu',
             'item_default_id' => $child_menu_id,

@@ -4,7 +4,7 @@ Tags: admin, frontend, debug, sidebar, toolbar
 Requires at least: 4.7
 Tested up to: 6.7
 Requires PHP: 5.6
-Stable tag: 1.24.1
+Stable tag: 1.25.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -91,6 +91,11 @@ The demo site is here: [https://playground.wordpress.net/?plugin=my-wp&url=/wp-a
 10. Developer panel on footer.
 
 == Changelog ==
+
+= 1.25.0 2025-01-24 =
+* Updated: Activate settings to heavy process debug items.
+* Updated: Request only has values on custom search filter.
+* Fixed: Add disallow on frontend author archive.
 
 = 1.24.1 2024-12-03 =
 * Updated: For WordPress 6.7.

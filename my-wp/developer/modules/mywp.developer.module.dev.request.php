@@ -73,6 +73,14 @@ final class MywpDeveloperModuleDevRequest extends MywpDeveloperAbstractModule {
 
   protected static function mywp_debug_render() {
 
+    if( ! MywpDeveloper::is_debug_item( 'debug_request' ) ) {
+
+      echo esc_html( __( 'Not activated.' , 'my-wp' ) );
+
+      return false;
+
+    }
+
     $debug_lists = self::get_debug_lists();
 
     if( empty( $debug_lists ) ) {

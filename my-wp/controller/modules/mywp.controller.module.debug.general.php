@@ -20,6 +20,12 @@ final class MywpControllerModuleDebugGeneral extends MywpControllerAbstractModul
 
     $initial_data['users'] = array();
 
+    $initial_data['mywp_cache'] = '';
+    $initial_data['debug_request'] = '';
+    $initial_data['debug_time'] = '';
+    $initial_data['debug_action'] = '';
+    $initial_data['debug_debugtrace'] = '';
+
     return $initial_data;
 
   }
@@ -27,6 +33,12 @@ final class MywpControllerModuleDebugGeneral extends MywpControllerAbstractModul
   public static function mywp_controller_default_data( $default_data ) {
 
     $default_data['users'] = array();
+
+    $default_data['mywp_cache'] = false;
+    $default_data['debug_request'] = false;
+    $default_data['debug_time'] = false;
+    $default_data['debug_action'] = false;
+    $default_data['debug_debugtrace'] = false;
 
     return $default_data;
 

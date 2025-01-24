@@ -22,6 +22,12 @@ final class MywpDeveloperModuleDevTimes extends MywpDeveloperAbstractModule {
 
     global $timestart;
 
+    if( ! MywpDeveloper::is_debug_item( 'debug_time' ) ) {
+
+      return false;
+
+    }
+
     $init_process = MywpDeveloper::get_process();
 
     $define_microtime = MywpHelper::get_define( 'MYWP_DEVELOPER_MICROTIME' );
@@ -106,6 +112,12 @@ final class MywpDeveloperModuleDevTimes extends MywpDeveloperAbstractModule {
   private static function set_process( $priority ) {
 
     if( ! MywpDeveloper::is_debug() ) {
+
+      return false;
+
+    }
+
+    if( ! MywpDeveloper::is_debug_item( 'debug_time' ) ) {
 
       return false;
 
@@ -202,6 +214,14 @@ final class MywpDeveloperModuleDevTimes extends MywpDeveloperAbstractModule {
 
   protected static function mywp_developer_debug() {
 
+    if( ! MywpDeveloper::is_debug_item( 'debug_time' ) ) {
+
+      echo esc_html( __( 'Not activated.' , 'my-wp' ) );
+
+      return false;
+
+    }
+
     $processes = self::get_processes();
 
     if( empty( $processes ) ) {
@@ -221,6 +241,8 @@ final class MywpDeveloperModuleDevTimes extends MywpDeveloperAbstractModule {
     printf( '%s = ' , __( 'All' ) );
 
     echo self::print_format( $first_process );
+
+    printf( 'Memory peak: %s' , MywpHelper::get_byte( memory_get_peak_usage() ) );
 
     $before_screen_process = self::get_before_screen_process();
 
@@ -288,6 +310,14 @@ final class MywpDeveloperModuleDevTimes extends MywpDeveloperAbstractModule {
 
   protected static function mywp_debug_render() {
 
+    if( ! MywpDeveloper::is_debug_item( 'debug_time' ) ) {
+
+      echo esc_html( __( 'Not activated.' , 'my-wp' ) );
+
+      return false;
+
+    }
+
     $processes = self::get_processes();
 
     if( empty( $processes ) ) {
@@ -310,7 +340,9 @@ final class MywpDeveloperModuleDevTimes extends MywpDeveloperAbstractModule {
 
     printf( '<th>%s</th>' , __( 'All' ) );
 
-    printf( '<td>%s</td>' , self::print_format( $first_process ) );
+    printf( '<td>%s' , self::print_format( $first_process ) );
+
+    printf( ' - Memory peak: %s</td>' , MywpHelper::get_byte( memory_get_peak_usage() ) );
 
     echo '</tr>';
 
@@ -506,7 +538,7 @@ final class MywpDeveloperModuleDevTimes extends MywpDeveloperAbstractModule {
 
   }
 
-  private static function print_format( $process  ) {
+  private static function print_format( $process ) {
 
     if( ! isset( $process['second'] ) or ! isset( $process['memory'] ) ) {
 

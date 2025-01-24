@@ -606,6 +606,12 @@ abstract class MywpAbstractControllerListModule extends MywpControllerAbstractMo
 
       let $mywp_custom_search_filter = $('#mywp-custom-search-filter');
 
+      if( $mywp_custom_search_filter.length < 1 ) {
+
+        return false;
+
+      }
+
       $mywp_custom_search_filter.insertBefore( $('.wp-header-end') ).addClass('show');
 
       $mywp_custom_search_filter.find('.title-toggle a').on('click', function() {
@@ -633,6 +639,42 @@ abstract class MywpAbstractControllerListModule extends MywpControllerAbstractMo
           $li.find('input[type=radio]').prop('checked', false);
 
         });
+
+      });
+
+      $mywp_custom_search_filter.find('form').on('submit', function() {
+
+        $mywp_custom_search_filter.find('input[type=text], input[type=number]').each( function( index , el ) {
+
+          if( $(el).val() === '' ) {
+
+            $(el).prop('name', '');
+
+          }
+
+        });
+
+        $mywp_custom_search_filter.find('input[type=checkbox]').each( function( index , el ) {
+
+          if( $(el).prop('checked') === false ) {
+
+            $(el).prop('name', '');
+
+          }
+
+        });
+
+        $mywp_custom_search_filter.find('select').each( function( index , el ) {
+
+          if( $(el).find('option:selected').val() === '' ) {
+
+            $(el).prop('name', '');
+
+          }
+
+        });
+
+        return true;
 
       });
 

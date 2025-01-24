@@ -120,15 +120,15 @@ final class MywpControllerModuleFrontendAuthorArchive extends MywpControllerAbst
 
     $disallow_author_link = str_replace( '%author%' , '' , $author_permalink_structure );
 
-    $site_url = site_url();
+    $home_url = home_url();
 
-    $site_url_parse = parse_url( $site_url );
+    $site_url_parse = parse_url( $home_url );
 
     $path = '';
 
     if( ! empty( $site_url_parse['path'] ) ) {
 
-      $path = site_url_parse['path'];
+      $path = $site_url_parse['path'];
 
     }
 

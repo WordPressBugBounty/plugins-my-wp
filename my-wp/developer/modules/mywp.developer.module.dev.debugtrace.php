@@ -29,6 +29,14 @@ final class MywpDeveloperModuleDebugtrace extends MywpDeveloperAbstractModule {
 
   protected static function mywp_developer_debug() {
 
+    if( ! MywpDeveloper::is_debug_item( 'debug_debugtrace' ) ) {
+
+      echo esc_html( __( 'Not activated.' , 'my-wp' ) );
+
+      return false;
+
+    }
+
     echo 'debug_backtrace() = ';
 
     print_r( debug_backtrace() );
@@ -36,6 +44,14 @@ final class MywpDeveloperModuleDebugtrace extends MywpDeveloperAbstractModule {
   }
 
   protected static function mywp_debug_render() {
+
+    if( ! MywpDeveloper::is_debug_item( 'debug_debugtrace' ) ) {
+
+      echo esc_html( __( 'Not activated.' , 'my-wp' ) );
+
+      return false;
+
+    }
 
     printf( '<textarea readonly="readonly">%s</textarea>' , print_r( debug_backtrace() , true ) );
 

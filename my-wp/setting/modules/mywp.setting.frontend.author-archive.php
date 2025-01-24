@@ -51,7 +51,7 @@ final class MywpSettingScreenFrontendAuthorArchive extends MywpAbstractSettingMo
 
     }
 
-    $site_url = site_url();
+    $home_url = home_url();
 
     ?>
     <table class="form-table">
@@ -77,7 +77,7 @@ final class MywpSettingScreenFrontendAuthorArchive extends MywpAbstractSettingMo
               <?php _e( 'Add Disallow' , 'my-wp' ); ?>
             </label>
             &nbsp;
-            <a target="_blank" href="<?php echo esc_url( $site_url . '/robots.txt' ); ?>">robots.txt</a>
+            <a target="_blank" href="<?php echo esc_url( $home_url . '/robots.txt' ); ?>">robots.txt</a>
           </td>
         </tr>
       </tbody>
