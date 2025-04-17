@@ -286,7 +286,7 @@ final class MywpSettingScreenAdminUsers extends MywpAbstractSettingColumnsModule
           </td>
         </tr>
         <tr>
-          <th><?php echo esc_html( __( 'Add New User' ) ); ?></th>
+          <th><?php echo esc_html( __( 'Add User' ) ); ?></th>
           <td>
             <label>
               <input type="checkbox" name="mywp[data][hide_add_new]" class="hide_add_new" value="1" <?php checked( $setting_data['hide_add_new'] , true ); ?> />

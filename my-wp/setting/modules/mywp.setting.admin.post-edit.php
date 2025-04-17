@@ -33,7 +33,7 @@ final class MywpSettingScreenAdminPostEdit extends MywpAbstractSettingModule {
   public static function mywp_setting_screens( $setting_screens ) {
 
     $setting_screens[ self::$id ] = array(
-      'title' => sprintf( '%s/%s' , __( 'Edit Post' ) , _x( 'Add New' , 'post' ) ),
+      'title' => sprintf( '%s/%s' , __( 'Edit Post' ) , __( 'Add Post' ) ),
       'menu' => self::$menu,
       'controller' => 'admin_post_edit',
       'use_advance' => true,
@@ -531,7 +531,7 @@ final class MywpSettingScreenAdminPostEdit extends MywpAbstractSettingModule {
 
       if( ! empty( $formatted_data['post_updated_messages'][ $key ] ) ) {
 
-        $new_formatted_data['post_updated_messages'][ $key ] = strip_tags( $formatted_data['post_updated_messages'][ $key ] );
+        $new_formatted_data['post_updated_messages'][ $key ] = wp_unslash( strip_tags( $formatted_data['post_updated_messages'][ $key ] ) );
 
       }
 
@@ -563,7 +563,7 @@ final class MywpSettingScreenAdminPostEdit extends MywpAbstractSettingModule {
 
     if( ! empty( $formatted_data['change_title_placeholder'] ) ) {
 
-      $new_formatted_data['change_title_placeholder'] = strip_tags( $formatted_data['change_title_placeholder'] );
+      $new_formatted_data['change_title_placeholder'] = wp_unslash( strip_tags( $formatted_data['change_title_placeholder'] ) );
 
     }
 

@@ -878,7 +878,7 @@ final class MywpSettingScreenAdminPosts extends MywpAbstractSettingColumnsModule
 
       if( ! empty( $formatted_data['bulk_post_updated_messages'][ $key ] ) ) {
 
-        $new_formatted_data['bulk_post_updated_messages'][ $key ] = strip_tags( $formatted_data['bulk_post_updated_messages'][ $key ] );
+        $new_formatted_data['bulk_post_updated_messages'][ $key ] = wp_unslash( strip_tags( $formatted_data['bulk_post_updated_messages'][ $key ] ) );
 
       }
 

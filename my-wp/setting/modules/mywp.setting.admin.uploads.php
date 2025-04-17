@@ -294,7 +294,7 @@ final class MywpSettingScreenAdminUploads extends MywpAbstractSettingColumnsModu
           </td>
         </tr>
         <tr>
-          <th><?php echo esc_html__( 'Add New Media File' ); ?></th>
+          <th><?php echo esc_html__( 'Add Media File' ); ?></th>
           <td>
             <label>
               <input type="checkbox" name="mywp[data][hide_add_new]" class="hide_add_new" value="1" <?php checked( $setting_data['hide_add_new'] , true ); ?> />
