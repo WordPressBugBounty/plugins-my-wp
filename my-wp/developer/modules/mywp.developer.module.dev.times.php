@@ -63,23 +63,74 @@ final class MywpDeveloperModuleDevTimes extends MywpDeveloperAbstractModule {
     self::add_actions( 'plugins_loaded' );
     self::add_actions( 'setup_theme' );
     self::add_actions( 'after_setup_theme' );
+
+    add_action( 'mywp_after_setup_theme' , array( __CLASS__ , 'mywp_after_setup_theme' ) , 100 );
+
+  }
+
+  public static function mywp_after_setup_theme() {
+
     self::add_actions( 'init' );
     self::add_actions( 'wp_loaded' );
 
-    if( is_admin() ) {
+    $debug_times_action_items = array(
+      'admin_bar_init',
+      'add_admin_bar_menus',
+      'parse_request',
+      'send_headers',
+      'wp',
+      'admin_bar_menu',
+      'wp_before_admin_bar_render',
+      'wp_after_admin_bar_render',
 
-      self::add_actions( 'admin_menu' );
-      self::add_actions( 'admin_init' );
-      self::add_actions( 'admin_head' );
-      self::add_actions( 'admin_footer' );
+      'admin_menu',
+      'admin_init',
+      'current_screen',
+      'admin_enqueue_scripts',
+      'admin_print_styles',
+      'admin_print_scripts',
+      'admin_head',
+      'adminmenu',
+      'in_admin_header',
+      'admin_notices',
+      'all_admin_notices',
+      'in_admin_footer',
+      'admin_footer',
 
-    } else {
+      'template_redirect',
+      'loop_start',
+      'loop_end',
+      'wp_head',
+      'wp_enqueue_scripts',
+      'wp_print_styles',
+      'wp_print_scripts',
+      'wp_footer',
+      'wp_print_footer_scripts',
+    );
 
-      self::add_actions( 'parse_request' );
-      self::add_actions( 'wp' );
-      self::add_actions( 'template_redirect' );
-      self::add_actions( 'wp_head' );
-      self::add_actions( 'wp_footer' );
+    $debug_times_action_items = apply_filters( 'mywp_debug_times_action_items' , $debug_times_action_items );
+
+    if( empty( $debug_times_action_items ) ) {
+
+      return false;
+
+    }
+
+    if( ! is_array( $debug_times_action_items ) ) {
+
+      return false;
+
+    }
+
+    foreach( $debug_times_action_items as $debug_times_action_item ) {
+
+      if( ! is_string( $debug_times_action_item ) ) {
+
+        continue;
+
+      }
+
+      self::add_actions( $debug_times_action_item );
 
     }
 
