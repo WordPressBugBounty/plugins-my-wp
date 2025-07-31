@@ -143,7 +143,7 @@ final class MywpControllerModuleAdminSidebar extends MywpControllerAbstractModul
 
         foreach( $default_siodebar['submenu']['mywp'] as $mywp_submenu ) {
 
-          $menu_setting_id  = sprintf( '%s-%d-%s' , $key , $found_mywp_child_menu_count , $mywp_submenu[2] );
+          $menu_setting_id  = sprintf( '%s.%d' , $key , $found_mywp_child_menu_count );
 
           $sidebar_items[ $menu_setting_id ] = (object) array(
             'ID' => $menu_setting_id,
@@ -288,7 +288,7 @@ final class MywpControllerModuleAdminSidebar extends MywpControllerAbstractModul
 
     }
 
-    ksort( $sidebar_items );
+    ksort( $sidebar_items , SORT_NUMERIC );
 
     self::$sidebar_items = $sidebar_items;
 

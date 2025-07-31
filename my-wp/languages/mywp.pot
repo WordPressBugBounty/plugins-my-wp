@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: My WP\n"
-"POT-Creation-Date: 2025-04-17 13:07+0900\n"
+"POT-Creation-Date: 2025-07-31 16:14+0900\n"
 "PO-Revision-Date: 2016-11-01 15:58+0900\n"
 "Last-Translator: \n"
 "Language-Team: gqevu6bsiz <gqevu6bsiz@gmail.com>\n"
@@ -95,7 +95,7 @@ msgstr ""
 #: controller/abstract.controller.toolbar.module.php:318
 #: developer/developer.init.php:90
 #: setting/modules/mywp.setting.main.general.php:24
-#: setting/setting.init.php:108 setting/setting.init.php:163
+#: setting/setting.init.php:109 setting/setting.init.php:164
 msgid "My WP"
 msgstr ""
 
@@ -153,7 +153,7 @@ msgid "Post restored to revision from %s."
 msgstr ""
 
 #: controller/modules/mywp.controller.module.admin.post.edit.php:106
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:951
+#: setting/abstract.setting.bulk.module.php:1107
 msgid "Post Title"
 msgstr ""
 
@@ -247,7 +247,7 @@ msgstr[1] ""
 
 #: controller/modules/mywp.controller.module.admin.posts.php:1181
 #: controller/modules/mywp.controller.module.admin.uploads.php:800
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:950
+#: setting/abstract.setting.bulk.module.php:1106
 msgid "Post Status"
 msgstr ""
 
@@ -439,29 +439,34 @@ msgstr ""
 msgid "%s is not found."
 msgstr ""
 
-#: core/class.helper.php:117
+#: core/class.helper.php:73
+#, php-format
+msgid "%s is error %s."
+msgstr ""
+
+#: core/class.helper.php:135
 #: setting/modules/mywp.setting.frontend.taxonomy-archive.php:100
 #, php-format
 msgid "%1$s: %2$s"
 msgstr ""
 
-#: core/class.helper.php:199
+#: core/class.helper.php:217
 msgid "TB"
 msgstr ""
 
-#: core/class.helper.php:205
+#: core/class.helper.php:223
 msgid "GB"
 msgstr ""
 
-#: core/class.helper.php:211
+#: core/class.helper.php:229
 msgid "MB"
 msgstr ""
 
-#: core/class.helper.php:217
+#: core/class.helper.php:235
 msgid "KB"
 msgstr ""
 
-#: core/class.helper.php:223
+#: core/class.helper.php:241
 msgid "Bytes"
 msgstr ""
 
@@ -523,8 +528,8 @@ msgstr ""
 #: developer/modules/mywp.developer.module.dev.debugtrace.php:34
 #: developer/modules/mywp.developer.module.dev.debugtrace.php:50
 #: developer/modules/mywp.developer.module.dev.request.php:78
-#: developer/modules/mywp.developer.module.dev.times.php:219
-#: developer/modules/mywp.developer.module.dev.times.php:315
+#: developer/modules/mywp.developer.module.dev.times.php:270
+#: developer/modules/mywp.developer.module.dev.times.php:366
 #: developer/modules/mywp.developer.module.mywp.cache.php:42
 #: developer/modules/mywp.developer.module.mywp.cache.php:66
 msgid "Not activated."
@@ -551,29 +556,28 @@ msgstr ""
 msgid "Require the define( \"SAVEQUERIES\" , true )."
 msgstr ""
 
-#: developer/modules/mywp.developer.module.dev.times.php:208
+#: developer/modules/mywp.developer.module.dev.times.php:259
 msgid "Action Times"
 msgstr ""
 
-#: developer/modules/mywp.developer.module.dev.times.php:241
-#: developer/modules/mywp.developer.module.dev.times.php:341
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:781
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:790
+#: developer/modules/mywp.developer.module.dev.times.php:292
+#: developer/modules/mywp.developer.module.dev.times.php:392
+#: setting/abstract.setting.bulk.module.php:874
 msgid "All"
 msgstr ""
 
-#: developer/modules/mywp.developer.module.dev.times.php:255
-#: developer/modules/mywp.developer.module.dev.times.php:363
+#: developer/modules/mywp.developer.module.dev.times.php:306
+#: developer/modules/mywp.developer.module.dev.times.php:414
 msgid "Before Screen"
 msgstr ""
 
-#: developer/modules/mywp.developer.module.dev.times.php:267
-#: developer/modules/mywp.developer.module.dev.times.php:379
+#: developer/modules/mywp.developer.module.dev.times.php:318
+#: developer/modules/mywp.developer.module.dev.times.php:430
 msgid "Screen"
 msgstr ""
 
-#: developer/modules/mywp.developer.module.dev.times.php:280
-#: developer/modules/mywp.developer.module.dev.times.php:400
+#: developer/modules/mywp.developer.module.dev.times.php:331
+#: developer/modules/mywp.developer.module.dev.times.php:451
 msgid "Total"
 msgstr ""
 
@@ -583,6 +587,55 @@ msgstr ""
 
 #: developer/modules/mywp.developer.module.mywp.error.php:118
 msgid "No errors."
+msgstr ""
+
+#: setting/abstract.setting.bulk.module.php:829
+msgid "Filter and Search"
+msgstr ""
+
+#: setting/abstract.setting.bulk.module.php:949
+msgid "Post not found."
+msgstr ""
+
+#: setting/abstract.setting.bulk.module.php:1063
+msgid "Please filter and search."
+msgstr ""
+
+#: setting/abstract.setting.bulk.module.php:1070
+msgid "Search results"
+msgstr ""
+
+#: setting/abstract.setting.bulk.module.php:1104
+#: setting/modules/mywp.setting.admin.comments.php:390
+#: setting/modules/mywp.setting.admin.comments.php:451
+#: setting/modules/mywp.setting.admin.posts.php:582
+#: setting/modules/mywp.setting.admin.posts.php:686
+#: setting/modules/mywp.setting.admin.terms.php:486
+#: setting/modules/mywp.setting.admin.terms.php:567
+#: setting/modules/mywp.setting.admin.uploads.php:419
+#: setting/modules/mywp.setting.admin.uploads.php:490
+#: setting/modules/mywp.setting.admin.users.php:405
+#: setting/modules/mywp.setting.admin.users.php:493
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:258
+msgid "ID"
+msgstr ""
+
+#: setting/abstract.setting.bulk.module.php:1105
+#: setting/modules/mywp.setting.site.post-type.php:24
+#: views/elements/setting-screen-select-post-type.php:29
+msgid "Post Type"
+msgstr ""
+
+#: setting/abstract.setting.bulk.module.php:1109
+msgid "All Post Metas"
+msgstr ""
+
+#: setting/abstract.setting.bulk.module.php:1110
+msgid "Terms"
+msgstr ""
+
+#: setting/abstract.setting.bulk.module.php:1135
+msgid "Bulk processing results"
 msgstr ""
 
 #: setting/abstract.setting.columns.module.php:97
@@ -846,7 +899,6 @@ msgstr ""
 #: setting/abstract.setting.toolbar.module.php:2679
 #: setting/modules/mywp.setting.admin.sidebar.php:1590
 #: setting/modules/mywp.setting.admin.sidebar.php:2419
-#: setting/setting.init.php:176
 #: views/elements/setting-screen-input-post.php:35
 msgid "Update"
 msgstr ""
@@ -873,12 +925,12 @@ msgid "Change Icon"
 msgstr ""
 
 #: setting/abstract.setting.toolbar.module.php:2824
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:834
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:195
 msgid "Meta key"
 msgstr ""
 
 #: setting/abstract.setting.toolbar.module.php:2824
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:838
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:201
 msgid "Meta value"
 msgstr ""
 
@@ -949,6 +1001,7 @@ msgstr ""
 #: setting/modules/mywp.setting.admin.user-edit.php:86
 #: setting/modules/mywp.setting.admin.users.php:277
 #: setting/modules/mywp.setting.admin.users.php:399
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:261
 msgid "Other"
 msgstr ""
 
@@ -1045,21 +1098,6 @@ msgstr ""
 #: setting/modules/mywp.setting.admin.uploads.php:391
 msgctxt "column name"
 msgid "Date"
-msgstr ""
-
-#: setting/modules/mywp.setting.admin.comments.php:390
-#: setting/modules/mywp.setting.admin.comments.php:451
-#: setting/modules/mywp.setting.admin.posts.php:582
-#: setting/modules/mywp.setting.admin.posts.php:686
-#: setting/modules/mywp.setting.admin.terms.php:486
-#: setting/modules/mywp.setting.admin.terms.php:567
-#: setting/modules/mywp.setting.admin.uploads.php:419
-#: setting/modules/mywp.setting.admin.uploads.php:490
-#: setting/modules/mywp.setting.admin.users.php:405
-#: setting/modules/mywp.setting.admin.users.php:493
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:883
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:948
-msgid "ID"
 msgstr ""
 
 #: setting/modules/mywp.setting.admin.comments.php:397
@@ -1428,7 +1466,6 @@ msgid "The %s is not found data."
 msgstr ""
 
 #: setting/modules/mywp.setting.admin.posts.php:28
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:810
 msgid "All Posts"
 msgstr ""
 
@@ -1437,6 +1474,7 @@ msgid "Bulk Updated Messages"
 msgstr ""
 
 #: setting/modules/mywp.setting.admin.posts.php:406
+#: setting/setting.init.php:177
 msgid "Bulk actions"
 msgstr ""
 
@@ -1478,6 +1516,7 @@ msgid "Slug"
 msgstr ""
 
 #: setting/modules/mywp.setting.admin.posts.php:655
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:265
 #: setting/modules/mywp.setting.debug.post-structure.php:93
 #: setting/modules/mywp.setting.debug.post-type-structure.php:115
 msgid "Custom Fields"
@@ -1515,6 +1554,7 @@ msgid "Site Editor"
 msgstr ""
 
 #: setting/modules/mywp.setting.admin.terms.php:28
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:273
 #: setting/modules/mywp.setting.debug.terms.php:24
 msgid "All Terms"
 msgstr ""
@@ -1593,6 +1633,8 @@ msgstr ""
 
 #: setting/modules/mywp.setting.admin.uploads.php:445
 #: setting/modules/mywp.setting.admin.uploads.php:516
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:326
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:263
 msgid "Details"
 msgstr ""
 
@@ -1630,7 +1672,7 @@ msgid "Language"
 msgstr ""
 
 #: setting/modules/mywp.setting.admin.user-edit.php:46
-#: setting/setting.init.php:153
+#: setting/setting.init.php:154
 msgid "Website"
 msgstr ""
 
@@ -1682,6 +1724,126 @@ msgstr ""
 #: setting/modules/mywp.setting.admin.users.php:417
 #: setting/modules/mywp.setting.admin.users.php:503
 msgid "Display name publicly as"
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:21
+msgid "Bulk duplicate posts from site in Network"
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:29
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:110
+msgid "Please select Site."
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:35
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:29
+msgid "Please select an Post Type."
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:41
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:35
+msgid "Please select an Post Status."
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:93
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:144
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:67
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:92
+#, php-format
+msgid "%s Post"
+msgid_plural "%s Posts"
+msgstr[0] ""
+msgstr[1] ""
+
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:104
+msgid "Please select an Post."
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:200
+msgid "Filter and search for posts to duplicate"
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:216
+msgid "Select posts to duplicate"
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:228
+msgid "Confirm duplication details"
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:248
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:182
+msgid "Please select the posts."
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:257
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:191
+msgid "Selected Post IDs"
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:284
+msgid "Duplicate Posts"
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:311
+msgid "Please duplicate posts."
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:318
+msgid "Bulk items"
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:324
+msgid "Post ID"
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.duplicate-post.php:325
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:259
+msgid "Bulk process"
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:21
+msgid "Bulk update of Posts custom fields"
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:78
+msgid "Please input meta_key."
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:138
+msgid "Filter and search for posts to update"
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:152
+msgid "Select posts to update"
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:164
+msgid "Confirm update details"
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:212
+msgid "It is recommend that you backup your database and do a dry run."
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:217
+msgid "Bulk update (Dry run)"
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:223
+msgid "Bulk update"
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:250
+msgid "Please bulk update."
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:260
+msgid "From meta value"
+msgstr ""
+
+#: setting/modules/mywp.setting.bulk.update-post-meta.php:262
+msgid "To meta value"
 msgstr ""
 
 #: setting/modules/mywp.setting.debug.blogs.php:26
@@ -1774,7 +1936,7 @@ msgstr ""
 
 #: setting/modules/mywp.setting.debug.general.php:24
 #: setting/modules/mywp.setting.main.general.php:79
-#: setting/setting.init.php:186 setting/setting.init.php:190
+#: setting/setting.init.php:187 setting/setting.init.php:191
 msgid "Debug"
 msgstr ""
 
@@ -2193,12 +2355,6 @@ msgstr ""
 msgid "Disable User Admin"
 msgstr ""
 
-#: setting/modules/mywp.setting.site.post-type.php:24
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:949
-#: views/elements/setting-screen-select-post-type.php:29
-msgid "Post Type"
-msgstr ""
-
 #: setting/modules/mywp.setting.site.post-type.php:41
 msgid "Change the capability for create_posts"
 msgstr ""
@@ -2253,141 +2409,51 @@ msgstr ""
 msgid "Hide taxonomies sitemap"
 msgstr ""
 
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:24
-msgid "Bulk Post custom fields"
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:59
-msgid "Please select an Post Type."
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:67
-msgid "Please select an Post Status."
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:119
-msgid "Please select an Post."
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:133
-msgid "Please enter the Meta key."
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:729
-msgid "Dry run"
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:776
-msgid "Filter post"
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:799
-msgid "Filter"
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:816
-msgid "Bulk update post custom fields"
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:821
-msgid "Please check posts you want to bulk update."
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:830
-msgid "Update Post IDs"
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:847
-msgid "It is recommend that you backup your database and do a dry run."
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:851
-msgid "Bulk update post meta of checked posts (Dry run)"
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:855
-msgid "Bulk update post meta of checked posts"
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:870
-#: setting/setting.init.php:487
-msgid "Finished"
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:875
-msgid "Please bulk update."
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:884
-msgid "Updated"
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:885
-msgid "From meta value"
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:887
-msgid "To meta value"
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:937
-msgid "Search Results"
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:937
-msgid "posts"
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:941
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:991
-msgid "Post not found."
-msgstr ""
-
-#: setting/modules/mywp.setting.update.bulk-post-meta.php:952
-msgid "All Post Metas"
-msgstr ""
-
-#: setting/setting.init.php:109
+#: setting/setting.init.php:110
 msgid "My WP Customize"
 msgstr ""
 
-#: setting/setting.init.php:123
+#: setting/setting.init.php:124
 msgid "Admin"
 msgstr ""
 
-#: setting/setting.init.php:133
+#: setting/setting.init.php:134
 msgid "Frontend"
 msgstr ""
 
-#: setting/setting.init.php:143
+#: setting/setting.init.php:144
 msgid "Log in"
 msgstr ""
 
-#: setting/setting.init.php:482
+#: setting/setting.init.php:483
 msgid "Please try again."
 msgstr ""
 
-#: setting/setting.init.php:483
+#: setting/setting.init.php:484
 msgid "An error has occurred. Please reload the page and try again."
 msgstr ""
 
-#: setting/setting.init.php:484
+#: setting/setting.init.php:485
 msgid "Are you sure you want to do this?"
 msgstr ""
 
-#: setting/setting.init.php:485
+#: setting/setting.init.php:486
 msgid "Are you sure you want to update?"
 msgstr ""
 
-#: setting/setting.init.php:486
+#: setting/setting.init.php:487
 msgid "Are you sure you want to delete this?"
 msgstr ""
 
 #: setting/setting.init.php:488
-msgid "Not found update URL."
+msgid "Finished"
 msgstr ""
 
 #: setting/setting.init.php:489
+msgid "Not found update URL."
+msgstr ""
+
+#: setting/setting.init.php:490
 msgid "It column can not be added because it has already added."
 msgstr ""
 

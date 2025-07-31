@@ -3,7 +3,7 @@
 Plugin Name: My WP Customize Admin/Frontend
 Plugin URI: https://mywpcustomize.com/
 Description: My WP is powerful admin and frontend customize and debug and extendable plugin.
-Version: 1.25.2
+Version: 1.26.0
 Author: gqevu6bsiz
 Author URI: https://mywpcustomize.com/
 Text Domain: my-wp
@@ -42,7 +42,7 @@ final class Mywp {
   private static function define_constants() {
 
     define( 'MYWP_NAME' , 'My WP' );
-    define( 'MYWP_VERSION' , '1.25.2' );
+    define( 'MYWP_VERSION' , '1.26.0' );
     define( 'MYWP_PLUGIN_FILE' , __FILE__ );
     define( 'MYWP_PLUGIN_BASENAME' , plugin_basename( MYWP_PLUGIN_FILE ) );
     define( 'MYWP_PLUGIN_DIRNAME' , dirname( MYWP_PLUGIN_BASENAME ) );
@@ -179,6 +179,7 @@ final class Mywp {
     require_once( $dir . 'abstract.setting.module.php' );
     require_once( $dir . 'abstract.setting.columns.module.php' );
     require_once( $dir . 'abstract.setting.toolbar.module.php' );
+    require_once( $dir . 'abstract.setting.bulk.module.php' );
     require_once( $dir . 'class.setting.php' );
     require_once( $dir . 'class.setting.menu.php' );
     require_once( $dir . 'class.setting.post.php' );

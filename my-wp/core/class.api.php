@@ -1527,6 +1527,369 @@ final class MywpApi {
 
   }
 
+  public static function duplicate_post_from_site_in_network( $from_site_id = false , $from_post_id = false , $args = array() ) {
+
+    $called_text = sprintf( '%s::%s()' , __CLASS__ , __FUNCTION__ );
+
+    $from_site_id = (int) $from_site_id;
+
+    if( empty( $from_site_id ) ) {
+
+      MywpHelper::error_require_message( '$from_site_id' , $called_text );
+
+      return false;
+
+    }
+
+    if( is_multisite() ) {
+
+      $blog_details = get_blog_details( array( 'blog_id' => $from_site_id ) );
+
+      if( empty( $blog_details ) ) {
+
+        MywpHelper::error_not_found_message( '$blog_details' , $called_text );
+
+        return false;
+
+      }
+
+    }
+
+    $from_post_id = (int) $from_post_id;
+
+    if( empty( $from_post_id ) ) {
+
+      MywpHelper::error_require_message( '$from_post_id' , $called_text );
+
+      return false;
+
+    }
+
+    $from_args = array(
+      'site_id' => $from_site_id,
+      'post_id' => $from_post_id,
+      'args' => $args,
+    );
+
+    $is_switch_blog = false;
+
+    if( is_multisite() ) {
+
+      if( $from_site_id !== (int) get_current_blog_id() ) {
+
+        $is_switch_blog = true;
+
+        switch_to_blog( $from_site_id );
+
+      }
+
+    }
+
+    $from_post = get_post( $from_post_id );
+
+    $from_post_metas = false;
+
+    $from_post_thumbnail_id = false;
+
+    $from_post_attached_file = false;
+
+    $from_post_taxonomy_terms = false;
+
+    if( ! empty( $from_post ) ) {
+
+      if( ! empty( $args['is_duplicate_custom_field'] ) ) {
+
+        $from_post_metas = get_post_meta( $from_post_id );
+
+      }
+
+      if( ! empty( $args['is_duplicate_featured_image'] ) ) {
+
+        $from_post_thumbnail_id = get_post_thumbnail_id( $from_post_id );
+
+        $from_post_attached_file = get_attached_file( $from_post_thumbnail_id );
+
+      }
+
+      if( ! empty( $args['is_duplicate_terms'] ) ) {
+
+        $taxonomies_args = array(
+          'object_type' => array( $from_post->post_type ),
+        );
+
+        $taxonomies = get_taxonomies( $taxonomies_args , 'objects' );
+
+        $from_post_taxonomy_terms = array();
+
+        if( ! empty( $taxonomies ) ) {
+
+          foreach( $taxonomies as $taxonomy ) {
+
+            $terms = wp_get_post_terms( $from_post_id , $taxonomy->name );
+
+            if( empty( $terms ) ) {
+
+              continue;
+
+            }
+
+            if( is_wp_error( $terms ) ) {
+
+              continue;
+
+            }
+
+            $from_post_taxonomy_terms[ $taxonomy->name ] = $terms;
+
+          }
+
+        }
+
+      }
+
+    }
+
+    if( $is_switch_blog ) {
+
+      restore_current_blog();
+
+    }
+
+    if( empty( $from_post ) ) {
+
+      MywpHelper::error_not_found_message( '$from_post' , $called_text );
+
+      return false;
+
+    }
+
+    $post_new_args = (array) $from_post;
+
+    foreach( array( 'ID' , 'guid' , 'post_date' , 'post_date_gmt' , 'post_modified' , 'post_modified_gmt' , 'post_content_filtered' , 'comment_count' , 'filter' ) as $key ) {
+
+      if( isset( $post_new_args[ $key ] ) ) {
+
+        unset( $post_new_args[ $key ] );
+
+      }
+
+    }
+
+    $post_new_args = apply_filters( 'mywp_api_duplicate_post_from_site_in_network_post_new_args' , $post_new_args , $from_post , $from_args );
+
+    if( empty( $post_new_args ) ) {
+
+      MywpHelper::error_not_found_message( '$post_new_args' , $called_text );
+
+      return false;
+
+    }
+
+    add_filter( 'wp_insert_post_empty_content' , '__return_false' , 1000 );
+
+    $new_post_id = wp_insert_post( $post_new_args , true );
+
+    remove_filter( 'wp_insert_post_empty_content' , '__return_false' , 1000 );
+
+    if( empty( $new_post_id ) ) {
+
+      MywpHelper::error_not_found_message( '$new_post_id' , $called_text );
+
+      return false;
+
+    }
+
+    if( is_wp_error( $new_post_id ) ) {
+
+      MywpHelper::error_returned_message( '$new_post_id' , sprintf( '[%s] %s' , $new_post_id->get_error_code() , $new_post_id->get_error_message() ) , $called_text );
+
+      return false;
+
+    }
+
+    $validate_new_post = apply_filters( 'mywp_api_duplicate_post_from_site_in_network_post_validate_new_post' , true , $new_post_id , $from_args );
+
+    if( ! $validate_new_post ) {
+
+      MywpHelper::error_returned_message( '$validate_new_post' , '' , $called_text );
+
+      wp_delete_post( $new_post_id , true );
+
+      return false;
+
+    }
+
+    if( ! empty( $args['is_duplicate_custom_field'] ) ) {
+
+      if( ! empty( $from_post_metas ) ) {
+
+        foreach( $from_post_metas as $meta_key => $from_post_meta_values ) {
+
+          foreach( $from_post_meta_values as $from_post_meta_value ) {
+
+            add_post_meta( $new_post_id , $meta_key , maybe_unserialize( $from_post_meta_value ) );
+
+          }
+
+        }
+
+      }
+
+    }
+
+    if( ! empty( $args['is_duplicate_featured_image'] ) ) {
+
+      if( ! empty( $from_post_attached_file ) ) {
+
+        $pathinfo = pathinfo( $from_post_attached_file );
+
+        $from_post_attached_file_data = file_get_contents( $from_post_attached_file );
+
+        $new_attachment_id = self::create_attachment_from_filedata( $from_post_attached_file_data , $pathinfo['basename'] );
+
+        if( empty( self::get_error() ) ) {
+
+          if( empty( $new_attachment_id ) ) {
+
+            MywpHelper::error_not_found_message( '$new_attachment_id' , $called_text );
+
+          } else {
+
+            wp_update_post( array( 'ID' => $new_attachment_id , 'post_parent' => $new_post_id ) );
+
+            set_post_thumbnail( $new_post_id , $new_attachment_id );
+
+          }
+
+        }
+
+      }
+
+    }
+
+    if( ! empty( $args['is_duplicate_terms'] ) ) {
+
+      if( ! empty( $from_post_taxonomy_terms ) ) {
+
+        foreach( $from_post_taxonomy_terms as $taxonomy_name => $from_post_terms ) {
+
+          $term_names = array();
+
+          foreach( $from_post_terms as $from_post_term ) {
+
+            $term_names[] = $from_post_term->name;
+
+          }
+
+          if( empty( $term_names ) ) {
+
+            continue;
+
+          }
+
+          $wp_set_object_terms = wp_set_object_terms( $new_post_id , $term_names , $taxonomy_name , false );
+
+          if( empty( $wp_set_object_terms ) ) {
+
+            MywpHelper::error_not_found_message( '$wp_set_object_terms' , $called_text );
+
+            continue;
+
+          }
+
+          if( is_wp_error( $wp_set_object_terms ) ) {
+
+            MywpHelper::error_returned_message( '$wp_set_object_terms' , sprintf( '[%s] %s' , $wp_set_object_terms->get_error_code() , $wp_set_object_terms->get_error_message() ) , $called_text );
+
+            continue;
+
+          }
+
+        }
+
+      }
+
+    }
+
+    do_action( 'mywp_api_duplicate_post_from_site_in_network' , $new_post_id , $from_args );
+
+    return $new_post_id;
+
+  }
+
+  public static function create_attachment_from_filedata( $filedata = false , $filename = false ) {
+
+    $called_text = sprintf( '%s::%s()' , __CLASS__ , __FUNCTION__ );
+
+    if( empty( $filedata ) ) {
+
+      MywpHelper::error_require_message( '$filedata' , $called_text );
+
+      return false;
+
+    }
+
+    $filename = strip_tags( $filename );
+
+    if( empty( $filename ) ) {
+
+      MywpHelper::error_require_message( '$filename' , $called_text );
+
+      return false;
+
+    }
+
+    $wp_upload_bits = wp_upload_bits( $filename , null , $filedata );
+
+    if( ! empty( $wp_upload_bits['error'] ) ) {
+
+      MywpHelper::error_returned_message( '$wp_upload_bits' , $wp_upload_bits['error'] , $called_text );
+
+      return false;
+
+    }
+
+    $wp_filetype = wp_check_filetype( $wp_upload_bits['file'] , null );
+
+    $attachment_args = array(
+      'post_mime_type' => $wp_filetype['type'],
+      'post_title' => sanitize_file_name( basename( $filename ) ),
+      'post_content' => '',
+      'post_status' => 'inherit',
+    );
+
+    $attachment_id = wp_insert_attachment( $attachment_args ,  $wp_upload_bits['file'] );
+
+    if( empty( $attachment_id ) ) {
+
+      MywpHelper::error_not_found_message( '$attachment_id' , $called_text );
+
+      return false;
+
+    }
+
+    if( is_wp_error( $attachment_id ) ) {
+
+      MywpHelper::error_returned_message( '$attachment_id' , sprintf( '[%s] %s' , $attachment_id->get_error_code() , $attachment_id->get_error_message() ) , $called_text );
+
+      return false;
+
+    }
+
+    if( ! function_exists( 'wp_generate_attachment_metadata' ) ) {
+
+      require_once( ABSPATH . 'wp-admin/includes/image.php' );
+
+    }
+
+    $attachment_metadata = wp_generate_attachment_metadata( $attachment_id , $wp_upload_bits['file'] );
+
+    wp_update_attachment_metadata( $attachment_id , $attachment_metadata);
+
+    return $attachment_id;
+
+  }
+
 }
 
 endif;

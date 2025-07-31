@@ -20,7 +20,7 @@ final class MywpSettingInit {
     add_filter( 'mywp_setting_menus' , array( __CLASS__ , 'add_setting_menu_frontend' ) , 40 );
     add_filter( 'mywp_setting_menus' , array( __CLASS__ , 'add_setting_menu_login' ) , 50 );
     add_filter( 'mywp_setting_menus' , array( __CLASS__ , 'add_setting_menu_site' ) , 60 );
-    add_filter( 'mywp_setting_menus' , array( __CLASS__ , 'add_setting_menu_update' ) , 70 );
+    add_filter( 'mywp_setting_menus' , array( __CLASS__ , 'add_setting_menu_bulk' ) , 70 );
     add_filter( 'mywp_setting_menus' , array( __CLASS__ , 'add_setting_menu_debug' ) , 100 );
 
     add_action( 'mywp_request_admin_manager' , array( __CLASS__ , 'mywp_request_admin_manager' ) );
@@ -82,7 +82,8 @@ final class MywpSettingInit {
       'site_post_type'            => $dir . 'mywp.setting.site.post-type.php',
       'site_sitemap'              => $dir . 'mywp.setting.site.sitemap.php',
 
-      'update_bulk_post_meta'     => $dir . 'mywp.setting.update.bulk-post-meta.php',
+      'bulk_update_post_meta'     => $dir . 'mywp.setting.bulk.update-post-meta.php',
+      'bulk_duplicate_post'       => $dir . 'mywp.setting.bulk.duplicate-post.php',
 
     );
 
@@ -170,10 +171,10 @@ final class MywpSettingInit {
 
   }
 
-  public static function add_setting_menu_update( $setting_menus ) {
+  public static function add_setting_menu_bulk( $setting_menus ) {
 
-    $setting_menus['update'] = array(
-      'menu_title' => __( 'Update' ),
+    $setting_menus['bulk'] = array(
+      'menu_title' => __( 'Bulk actions' , 'my-wp' ),
     );
 
     return $setting_menus;

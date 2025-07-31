@@ -1601,7 +1601,7 @@ final class MywpSettingScreenAdminSidebar extends MywpAbstractSettingModule {
 
     if( ! empty( $default_sidebar['menu'] ) ) {
 
-      ksort( $default_sidebar['menu'] );
+      ksort( $default_sidebar['menu'] , SORT_NUMERIC );
 
     }
 
@@ -1609,7 +1609,7 @@ final class MywpSettingScreenAdminSidebar extends MywpAbstractSettingModule {
 
       foreach( $default_sidebar['submenu'] as $parent_id => $submenus ) {
 
-        ksort( $default_sidebar['submenu'][ $parent_id ] );
+        ksort( $default_sidebar['submenu'][ $parent_id ] , SORT_NUMERIC );
 
       }
 

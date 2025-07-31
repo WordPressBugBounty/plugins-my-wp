@@ -515,7 +515,7 @@ abstract class MywpAbstractControllerToolbarModule extends MywpControllerAbstrac
 
     }
 
-    ksort( $toolbar_items );
+    ksort( $toolbar_items , SORT_NUMERIC );
 
     static::$toolbar_items = $toolbar_items;
 

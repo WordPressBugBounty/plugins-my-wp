@@ -56,6 +56,24 @@ final class MywpHelper {
 
   }
 
+  public static function error_returned_message( $returned = false , $message = false , $called = false ) {
+
+    if( $returned === false or $called === false ) {
+
+      return false;
+
+    }
+
+    $returned = strip_tags( $returned );
+
+    $message = strip_tags( $message );
+
+    $called = strip_tags( $called );
+
+    self::error_message( sprintf( __( '%s is error %s.' , 'my-wp' ) , $returned , $message ) , $called );
+
+  }
+
   public static function error_deprecated( $deprecated_message = false , $called = false ) {
 
     if( $deprecated_message === false or $called === false ) {
