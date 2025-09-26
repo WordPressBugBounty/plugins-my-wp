@@ -45,6 +45,9 @@ final class MywpControllerModuleAdminPostEdit extends MywpControllerAbstractModu
     $initial_data['hide_publish_metabox_change_publish_on'] = '';
     $initial_data['hide_publish_metabox_revisions'] = '';
 
+    $initial_data['show_select_custom_post_statuses'] = '';
+    $initial_data['selectable_custom_post_statuses'] = array();
+
     return $initial_data;
 
   }
@@ -77,6 +80,9 @@ final class MywpControllerModuleAdminPostEdit extends MywpControllerAbstractModu
     $default_data['hide_publish_metabox_change_publish_status'] = false;
     $default_data['hide_publish_metabox_change_publish_on'] = false;
     $default_data['hide_publish_metabox_revisions'] = false;
+
+    $default_data['show_select_custom_post_statuses'] = false;
+    $default_data['selectable_custom_post_statuses'] = array();
 
     return $default_data;
 
@@ -226,9 +232,13 @@ final class MywpControllerModuleAdminPostEdit extends MywpControllerAbstractModu
 
     add_filter( 'enter_title_here' , array( __CLASS__ , 'change_title_placeholder' ) );
 
+    add_action( 'post_submitbox_misc_actions' , array( __CLASS__ , 'show_select_custom_post_statuses' ) );
+
     add_action( 'admin_print_footer_scripts' , array( __CLASS__ , 'prevent_meta_boxes' ) );
 
     add_action( 'admin_print_footer_scripts' , array( __CLASS__ , 'auto_change_title' ) );
+
+    add_action( 'admin_print_footer_scripts' , array( __CLASS__ , 'change_publish_button' ) );
 
   }
 
@@ -1032,6 +1042,72 @@ final class MywpControllerModuleAdminPostEdit extends MywpControllerAbstractModu
 
   }
 
+  public static function show_select_custom_post_statuses( $post ) {
+
+    if( ! self::is_do_function( __FUNCTION__ ) ) {
+
+      return false;
+
+    }
+
+    $setting_data = self::get_setting_data();
+
+    if( empty( $setting_data['show_select_custom_post_statuses'] ) ) {
+
+      return false;
+
+    }
+
+    $selectable_custom_post_statuses = $setting_data['selectable_custom_post_statuses'];
+
+    $all_post_statuses = MywpApi::get_all_post_statuses();
+
+    ?>
+
+    <div class="misc-pub-section ">
+
+      <?php _e( 'Status:' ); ?>
+
+      <select name="post_status">
+
+        <?php if( ! empty( $selectable_custom_post_statuses ) ) : ?>
+
+          <?php foreach( $selectable_custom_post_statuses as $selectable_custom_post_status ) : ?>
+
+            <?php if( ! isset( $all_post_statuses[ $selectable_custom_post_status ] ) ) : ?>
+
+              <?php continue; ?>
+
+            <?php endif; ?>
+
+            <?php $post_status_object = $all_post_statuses[ $selectable_custom_post_status ]; ?>
+
+            <?php $selected = false; ?>
+
+            <?php if( $post->post_status === $selectable_custom_post_status ) : ?>
+
+              <?php $selected = true; ?>
+
+            <?php endif; ?>
+
+            <option value="<?php echo esc_attr( $selectable_custom_post_status ); ?>" <?php selected( $selected , true ); ?>>
+              <?php echo esc_html( $post_status_object->label ); ?>
+            </option>
+
+          <?php endforeach; ?>
+
+        <?php endif; ?>
+
+      </select>
+
+    </div>
+
+    <?php
+
+    self::after_do_function( __FUNCTION__ );
+
+  }
+
   public static function prevent_meta_boxes() {
 
     if( ! self::is_do_function( __FUNCTION__ ) ) {
@@ -1118,6 +1194,46 @@ final class MywpControllerModuleAdminPostEdit extends MywpControllerAbstractModu
     jQuery(function( $ ) {
 
       $("#titlediv #titlewrap #title").val( '<?php echo esc_attr( $post->ID ); ?>' );
+
+    });
+    </script>
+
+    <?php
+
+    self::after_do_function( __FUNCTION__ );
+
+  }
+
+  public static function change_publish_button() {
+
+    global $post;
+
+    if( empty( $post ) or empty( $post->ID ) ) {
+
+      return false;
+
+    }
+
+    if( ! self::is_do_function( __FUNCTION__ ) ) {
+
+      return false;
+
+    }
+
+    $setting_data = self::get_setting_data();
+
+    if( empty( $setting_data['show_select_custom_post_statuses'] ) ) {
+
+      return false;
+
+    }
+
+    ?>
+
+    <script>
+    jQuery(function( $ ) {
+
+      $('#publish').prop( 'name' , 'save' ).prop( 'id' , 'save' ).val( '<?php echo esc_js( __( 'Update' ) ); ?>' );
 
     });
     </script>

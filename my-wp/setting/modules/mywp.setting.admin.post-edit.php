@@ -72,6 +72,52 @@ final class MywpSettingScreenAdminPostEdit extends MywpAbstractSettingModule {
 
   }
 
+  public static function mywp_current_admin_enqueue_scripts() {
+
+    $scripts = array( 'jquery-ui-sortable' );
+
+    foreach( $scripts as $script ) {
+
+      wp_enqueue_script( $script );
+
+    }
+
+  }
+
+  public static function mywp_current_admin_print_styles() {
+
+    ?>
+    <style>
+    #selectable-post-statuses {}
+    #selectable-post-statuses .selectable-post-status {
+      margin: 0 auto;
+      padding: 8px;
+      cursor: grab;
+      border: 1px solid #ddd;
+      background: #fafafa;
+    }
+    #selectable-post-statuses .selectable-post-status:hover {
+      border-color: #999;
+    }
+    </style>
+    <?php
+
+  }
+
+  public static function mywp_current_admin_print_footer_scripts() {
+
+    ?>
+    <script>
+    jQuery(function( $ ) {
+
+      $('#selectable-post-statuses').sortable();
+
+    });
+    </script>
+    <?php
+
+  }
+
   public static function mywp_current_setting_screen_header() {
 
     MywpApi::include_file( MYWP_PLUGIN_PATH . 'views/elements/setting-screen-select-post-type.php' );
@@ -377,6 +423,44 @@ final class MywpSettingScreenAdminPostEdit extends MywpAbstractSettingModule {
 
     }
 
+    $all_post_statuses = MywpApi::get_all_post_statuses();
+
+    $selectable_post_statuses = array();
+
+    if( ! empty( $setting_data['selectable_custom_post_statuses'] ) ) {
+
+      foreach( $setting_data['selectable_custom_post_statuses'] as $selectable_custom_post_status ) {
+
+        if( ! isset( $all_post_statuses[ $selectable_custom_post_status ] ) ) {
+
+          continue;
+
+        }
+
+        $selectable_post_statuses[ $selectable_custom_post_status ] = array(
+          'label' => $all_post_statuses[ $selectable_custom_post_status ]->label,
+          'checked' => true,
+        );
+
+        unset( $all_post_statuses[ $selectable_custom_post_status ] );
+
+      }
+
+    }
+
+    if( ! empty( $all_post_statuses ) ) {
+
+      foreach( $all_post_statuses as $post_status => $post_status_object ) {
+
+        $selectable_post_statuses[ $post_status ] = array(
+          'label' => $post_status_object->label,
+          'checked' => false,
+        );
+
+      }
+
+    }
+
     ?>
 
     <?php if( ! self::$is_use_block_editor ) : ?>
@@ -436,6 +520,49 @@ final class MywpSettingScreenAdminPostEdit extends MywpAbstractSettingModule {
                 <input type="checkbox" name="mywp[data][hide_publish_metabox_revisions]" class="hide_publish_metabox_revisions" value="1" <?php checked( $setting_data['hide_publish_metabox_revisions'] , true ); ?> />
                 <?php _e( 'Hide' ); ?>
               </label>
+            </td>
+          </tr>
+          <tr>
+            <th><?php echo _e( 'Custom post statuses' ); ?></th>
+            <td>
+              <label>
+                <input type="checkbox" name="mywp[data][show_select_custom_post_statuses]" class="show_select_custom_post_statuses" value="1" <?php checked( $setting_data['show_select_custom_post_statuses'] , true ); ?> />
+                <?php _e( 'Show' ); ?>
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <th><?php echo _e( 'Selectable post statuses' ); ?></th>
+            <td>
+              <div id="selectable-post-statuses">
+
+                <?php if( ! empty( $selectable_post_statuses ) ) : ?>
+
+                  <?php foreach( $selectable_post_statuses as $post_status => $selectable_post_status ) : ?>
+
+                    <?php $checked = false; ?>
+
+                    <?php if( ! empty( $setting_data['selectable_custom_post_statuses'][ $post_status ] ) ) : ?>
+
+                      <?php $checked = true; ?>
+
+                    <?php endif; ?>
+
+                    <div class="selectable-post-status">
+
+                      <label>
+                        <input type="checkbox" name="mywp[data][selectable_custom_post_statuses][<?php echo esc_attr( $post_status ); ?>]" class="selectable_custom_post_statuses" value="1" <?php checked( $selectable_post_status['checked'] , true ); ?> />
+                        [<?php echo esc_html( $post_status ); ?>]
+                        <?php echo esc_html( $selectable_post_status['label'] ); ?>
+                      </label>
+
+                    </div>
+
+                  <?php endforeach; ?>
+
+                <?php endif; ?>
+
+              </div>
             </td>
           </tr>
         </tbody>
@@ -636,6 +763,38 @@ final class MywpSettingScreenAdminPostEdit extends MywpAbstractSettingModule {
     if( ! empty( $formatted_data['hide_publish_metabox_revisions'] ) ) {
 
       $new_formatted_data['hide_publish_metabox_revisions'] = true;
+
+    }
+
+    if( ! empty( $formatted_data['show_select_custom_post_statuses'] ) ) {
+
+      $new_formatted_data['show_select_custom_post_statuses'] = true;
+
+    }
+
+    $all_post_statuses = MywpApi::get_all_post_statuses();
+
+    if( ! empty( $formatted_data['selectable_custom_post_statuses'] ) ) {
+
+      $new_formatted_data['selectable_custom_post_statuses'] = array();
+
+      foreach( $formatted_data['selectable_custom_post_statuses'] as $post_type => $v ) {
+
+        if( empty( $v ) ) {
+
+          continue;
+
+        }
+
+        if( ! isset( $all_post_statuses[ $post_type ] ) ) {
+
+          continue;
+
+        }
+
+        $new_formatted_data['selectable_custom_post_statuses'][] = $post_type;
+
+      }
 
     }
 

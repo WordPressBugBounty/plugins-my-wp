@@ -4,7 +4,7 @@ Tags: admin, frontend, debug, sidebar, toolbar
 Requires at least: 4.7
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 1.26.0
+Stable tag: 1.27.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -92,9 +92,13 @@ The demo site is here: [https://playground.wordpress.net/?plugin=my-wp&url=/wp-a
 
 == Changelog ==
 
+= 1.27.0 2025-09-26 =
+* Added: Add date and status columns in the posts list.
+* Added: Selecting custom post statuses in post editing screen.
+
 = 1.26.0 2025-07-31 =
-* Added: Duplicate posts on multisite..
-* Changed: Setting class from update to bulk..
+* Added: Duplicate posts on multisite.
+* Changed: Setting class from update to bulk.
 * Fixed: Admin sidebar and toolbar sort bug.
 
 = 1.25.2 2025-06-09 =

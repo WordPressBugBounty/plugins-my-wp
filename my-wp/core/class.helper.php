@@ -310,6 +310,14 @@ final class MywpHelper {
 
   }
 
+  public static function sanitize_textarea( $value = false ) {
+
+    $value = sanitize_textarea_field( $value );
+
+    return $value;
+
+  }
+
   public static function sanitize_number( $value ) {
 
     $value = self::sanitize_text( $value );
@@ -329,6 +337,26 @@ final class MywpHelper {
     $value = (int) $value;
 
     if( empty( $value ) ) {
+
+      return false;
+
+    }
+
+    return $value;
+
+  }
+
+  public static function sanitize_email( $value = false ) {
+
+    $value = self::sanitize_text( $value );
+
+    if( empty( $value ) ) {
+
+      return false;
+
+    }
+
+    if( ! is_email( $value ) ) {
 
       return false;
 
@@ -386,39 +414,33 @@ final class MywpHelper {
 
   }
 
+  public static function sanitize_taxonomy_name( $value = false ) {
+
+    $value = self::sanitize_text( $value );
+
+    if( empty( $value ) ) {
+
+      return false;
+
+    }
+
+    if( ! taxonomy_exists( $value ) ) {
+
+      return false;
+
+    }
+
+    return $value;
+
+  }
+
   public static function sanitize_term_ids( $taxonomy , $values ) {
-
-    $taxonomy = sanitize_text_field( $taxonomy );
-
-    if( empty( $taxonomy ) ) {
-
-      return false;
-
-    }
-
-    if( ! taxonomy_exists( $taxonomy ) ) {
-
-      return false;
-
-    }
-
-    if( empty( $values ) ) {
-
-      return false;
-
-    }
-
-    if( ! is_array( $values ) ) {
-
-      return false;
-
-    }
 
     $term_ids = array();
 
     foreach( $values as $term_id ) {
 
-      $term_id = MywpHelper::sanitize_number( $term_id );
+      $term_id = self::sanitize_term_id( $taxonomy , $term_id );
 
       if( empty( $term_id ) ) {
 
@@ -426,19 +448,43 @@ final class MywpHelper {
 
       }
 
-      $term_exists = term_exists( $term_id , $taxonomy );
-
-      if( empty( $term_exists['term_id'] ) ) {
-
-        continue;
-
-      }
-
-      $term_ids[] = (int) $term_exists['term_id'];
+      $term_ids[] = $term_id;
 
     }
 
     return $term_ids;
+
+  }
+
+  public static function sanitize_term_id( $taxonomy = false , $value = false ) {
+
+    $taxonomy = self::sanitize_taxonomy_name( $taxonomy );
+
+    if( empty( $taxonomy ) ) {
+
+      return false;
+
+    }
+
+    $value = self::sanitize_number( $value );
+
+    if( empty( $value ) ) {
+
+      return false;
+
+    }
+
+    $term_exists = term_exists( $value , $taxonomy );
+
+    if( empty( $term_exists['term_id'] ) ) {
+
+      return false;
+
+    }
+
+    $term_id = $term_exists['term_id'];
+
+    return (int) $term_id;
 
   }
 

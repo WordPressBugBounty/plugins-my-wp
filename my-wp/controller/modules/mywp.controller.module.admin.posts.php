@@ -442,7 +442,7 @@ final class MywpControllerModuleAdminPosts extends MywpAbstractControllerListMod
 
       }
 
-      if( $orderby === 'post_excerpt' ) {
+      if( in_array( $orderby , array( 'post_excerpt' , 'post_status' , 'post_modified' ) ) ) {
 
         $order = $wp_query->get( 'order' );
 
@@ -549,6 +549,32 @@ final class MywpControllerModuleAdminPosts extends MywpAbstractControllerListMod
     } elseif( $column_id === 'mywp_column_menu_order' ) {
 
       echo esc_html( $post->menu_order );
+
+    } elseif( $column_id === 'mywp_column_status' ) {
+
+      $post_status_object = get_post_status_object( $post->post_status );
+
+      if( ! empty( $post_status_object->label ) ) {
+
+        echo esc_html( $post_status_object->label );
+
+      } else {
+
+        echo esc_html( $post->post_status );
+
+      }
+
+    } elseif( $column_id === 'mywp_column_date' ) {
+
+      $the_time = sprintf( __( '%1$s at %2$s' ) , get_the_time( __( 'Y/m/d' ) , $post ) , get_the_time( __( 'g:i a' ) , $post ) );
+
+      echo esc_html( $the_time );
+
+    } elseif( $column_id === 'mywp_column_modified' ) {
+
+      $the_modified_time = sprintf( __( '%1$s at %2$s' ) , get_the_modified_time( __( 'Y/m/d' ) , $post ) , get_the_modified_time( __( 'g:i a' ) , $post ) );
+
+      echo esc_html( $the_modified_time );
 
     } elseif( $column_id === 'mywp_column_slug' ) {
 
