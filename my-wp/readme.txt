@@ -2,9 +2,9 @@
 Contributors: gqevu6bsiz
 Tags: admin, frontend, debug, sidebar, toolbar
 Requires at least: 4.7
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 5.6
-Stable tag: 1.27.0
+Stable tag: 1.27.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -91,6 +91,10 @@ The demo site is here: [https://playground.wordpress.net/?plugin=my-wp&url=/wp-a
 10. Developer panel on footer.
 
 == Changelog ==
+
+= 1.27.1 2025-12-07 =
+* Tested with WP 6.9.
+* Fixed: Escape characters for custom search filter.
 
 = 1.27.0 2025-09-26 =
 * Added: Add date and status columns in the posts list.

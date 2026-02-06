@@ -680,7 +680,7 @@ abstract class MywpAbstractControllerListModule extends MywpControllerAbstractMo
 
     });
     </script>
-    <div id="mywp-custom-search-filter" class="<?php echo $custom_search_filter_add_class; ?>">
+    <div id="mywp-custom-search-filter" class="<?php echo esc_attr( $custom_search_filter_add_class ); ?>">
 
       <p class="title-toggle">
         <a href="javascript:void(0);">
